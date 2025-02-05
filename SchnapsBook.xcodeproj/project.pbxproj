@@ -7,20 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1072E9C32D4FDE01000F7B20 /* SBPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9C22D4FDE01000F7B20 /* SBPlayer.swift */; };
+		1072E9C52D4FDE64000F7B20 /* SBGameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9C42D4FDE64000F7B20 /* SBGameRound.swift */; };
+		1072E9C72D4FDE73000F7B20 /* SBGameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9C62D4FDE73000F7B20 /* SBGameType.swift */; };
+		1072E9C92D4FE23F000F7B20 /* SBGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9C82D4FE23F000F7B20 /* SBGame.swift */; };
+		1072E9CB2D4FE39C000F7B20 /* SBSchnapsBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9CA2D4FE39C000F7B20 /* SBSchnapsBook.swift */; };
+		1072E9EA2D50FD10000F7B20 /* PlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9E92D50FD10000F7B20 /* PlayersView.swift */; };
+		1072E9ED2D50FE56000F7B20 /* SchnapsGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9EC2D50FE56000F7B20 /* SchnapsGamesView.swift */; };
+		1072E9EF2D5104AF000F7B20 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9EE2D5104AF000F7B20 /* PlayerDetail.swift */; };
+		1072E9F12D510A97000F7B20 /* NewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9F02D510A97000F7B20 /* NewPlayerView.swift */; };
+		1072E9F32D512FDE000F7B20 /* GameCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9F22D512FDE000F7B20 /* GameCreationView.swift */; };
 		10D862F92D3BD5A1000C66E6 /* SchnapsBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */; };
-		10D862FB2D3BD5A1000C66E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D862FA2D3BD5A1000C66E6 /* ContentView.swift */; };
-		10D862FD2D3BD5A1000C66E6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D862FC2D3BD5A1000C66E6 /* Item.swift */; };
 		10D862FF2D3BD5A3000C66E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */; };
 		10D863022D3BD5A3000C66E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D863012D3BD5A3000C66E6 /* Preview Assets.xcassets */; };
+		10D863092D3BD5DE000C66E6 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D863082D3BD5DE000C66E6 /* GameViewModel.swift */; };
+		10D8630B2D3BD607000C66E6 /* SchnapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D8630A2D3BD607000C66E6 /* SchnapsViewModel.swift */; };
+		10D8630F2D3BD8A2000C66E6 /* SchnapsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D8630E2D3BD8A2000C66E6 /* SchnapsMainView.swift */; };
+		10D863112D3BD8B0000C66E6 /* SchnapsGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D863102D3BD8B0000C66E6 /* SchnapsGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1072E9C22D4FDE01000F7B20 /* SBPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBPlayer.swift; sourceTree = "<group>"; };
+		1072E9C42D4FDE64000F7B20 /* SBGameRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBGameRound.swift; sourceTree = "<group>"; };
+		1072E9C62D4FDE73000F7B20 /* SBGameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBGameType.swift; sourceTree = "<group>"; };
+		1072E9C82D4FE23F000F7B20 /* SBGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBGame.swift; sourceTree = "<group>"; };
+		1072E9CA2D4FE39C000F7B20 /* SBSchnapsBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBSchnapsBook.swift; sourceTree = "<group>"; };
+		1072E9E92D50FD10000F7B20 /* PlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersView.swift; sourceTree = "<group>"; };
+		1072E9EC2D50FE56000F7B20 /* SchnapsGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsGamesView.swift; sourceTree = "<group>"; };
+		1072E9EE2D5104AF000F7B20 /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
+		1072E9F02D510A97000F7B20 /* NewPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayerView.swift; sourceTree = "<group>"; };
+		1072E9F22D512FDE000F7B20 /* GameCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCreationView.swift; sourceTree = "<group>"; };
 		10D862F52D3BD5A1000C66E6 /* SchnapsBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchnapsBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsBookApp.swift; sourceTree = "<group>"; };
-		10D862FA2D3BD5A1000C66E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		10D862FC2D3BD5A1000C66E6 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10D863012D3BD5A3000C66E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		10D863082D3BD5DE000C66E6 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		10D8630A2D3BD607000C66E6 /* SchnapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsViewModel.swift; sourceTree = "<group>"; };
+		10D8630E2D3BD8A2000C66E6 /* SchnapsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsMainView.swift; sourceTree = "<group>"; };
+		10D863102D3BD8B0000C66E6 /* SchnapsGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +58,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1072E9C12D4FDDE3000F7B20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1072E9C22D4FDE01000F7B20 /* SBPlayer.swift */,
+				1072E9C42D4FDE64000F7B20 /* SBGameRound.swift */,
+				1072E9C62D4FDE73000F7B20 /* SBGameType.swift */,
+				1072E9C82D4FE23F000F7B20 /* SBGame.swift */,
+				1072E9CA2D4FE39C000F7B20 /* SBSchnapsBook.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1072E9E82D50FCFF000F7B20 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				1072E9E92D50FD10000F7B20 /* PlayersView.swift */,
+				1072E9EE2D5104AF000F7B20 /* PlayerDetail.swift */,
+				1072E9F02D510A97000F7B20 /* NewPlayerView.swift */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
+		1072E9EB2D50FDE5000F7B20 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				10D8630D2D3BD656000C66E6 /* Game */,
+				1072E9EC2D50FE56000F7B20 /* SchnapsGamesView.swift */,
+				1072E9F22D512FDE000F7B20 /* GameCreationView.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
 		10D862EC2D3BD5A1000C66E6 = {
 			isa = PBXGroup;
 			children = (
@@ -53,9 +109,11 @@
 		10D862F72D3BD5A1000C66E6 /* SchnapsBook */ = {
 			isa = PBXGroup;
 			children = (
+				1072E9C12D4FDDE3000F7B20 /* Model */,
 				10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */,
-				10D862FA2D3BD5A1000C66E6 /* ContentView.swift */,
-				10D862FC2D3BD5A1000C66E6 /* Item.swift */,
+				10D8630C2D3BD63E000C66E6 /* Main */,
+				1072E9EB2D50FDE5000F7B20 /* Games */,
+				1072E9E82D50FCFF000F7B20 /* Players */,
 				10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */,
 				10D863002D3BD5A3000C66E6 /* Preview Content */,
 			);
@@ -68,6 +126,24 @@
 				10D863012D3BD5A3000C66E6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		10D8630C2D3BD63E000C66E6 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				10D8630A2D3BD607000C66E6 /* SchnapsViewModel.swift */,
+				10D8630E2D3BD8A2000C66E6 /* SchnapsMainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		10D8630D2D3BD656000C66E6 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				10D863082D3BD5DE000C66E6 /* GameViewModel.swift */,
+				10D863102D3BD8B0000C66E6 /* SchnapsGameView.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +216,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10D862FB2D3BD5A1000C66E6 /* ContentView.swift in Sources */,
-				10D862FD2D3BD5A1000C66E6 /* Item.swift in Sources */,
+				1072E9C72D4FDE73000F7B20 /* SBGameType.swift in Sources */,
+				10D863092D3BD5DE000C66E6 /* GameViewModel.swift in Sources */,
+				1072E9C32D4FDE01000F7B20 /* SBPlayer.swift in Sources */,
+				1072E9F32D512FDE000F7B20 /* GameCreationView.swift in Sources */,
+				1072E9ED2D50FE56000F7B20 /* SchnapsGamesView.swift in Sources */,
 				10D862F92D3BD5A1000C66E6 /* SchnapsBookApp.swift in Sources */,
+				10D8630B2D3BD607000C66E6 /* SchnapsViewModel.swift in Sources */,
+				10D863112D3BD8B0000C66E6 /* SchnapsGameView.swift in Sources */,
+				1072E9EF2D5104AF000F7B20 /* PlayerDetail.swift in Sources */,
+				1072E9EA2D50FD10000F7B20 /* PlayersView.swift in Sources */,
+				1072E9C92D4FE23F000F7B20 /* SBGame.swift in Sources */,
+				1072E9C52D4FDE64000F7B20 /* SBGameRound.swift in Sources */,
+				1072E9CB2D4FE39C000F7B20 /* SBSchnapsBook.swift in Sources */,
+				1072E9F12D510A97000F7B20 /* NewPlayerView.swift in Sources */,
+				10D8630F2D3BD8A2000C66E6 /* SchnapsMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

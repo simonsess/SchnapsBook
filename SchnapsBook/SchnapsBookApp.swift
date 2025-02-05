@@ -1,10 +1,3 @@
-//
-//  SchnapsBookApp.swift
-//  SchnapsBook
-//
-//  Created by Simon Skalicky on 18/01/2025.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -12,9 +5,11 @@ import SwiftData
 struct SchnapsBookApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            SBGame.self,
+            SBPlayer.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let isPreview = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: isPreview)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
@@ -25,7 +20,7 @@ struct SchnapsBookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SchnapsMainView()
         }
         .modelContainer(sharedModelContainer)
     }

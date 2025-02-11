@@ -3,6 +3,7 @@ import SwiftData
 
 @Model
 final class SBGame: ObservableObject {
+    var id: UUID
     var name: String
     var date: Date
     var players: [SBPlayer]
@@ -10,6 +11,7 @@ final class SBGame: ObservableObject {
     var rounds: [SBGameRound]
     
     init(name: String, date: Date, players: [SBPlayer], playerToVote: SBPlayer, rounds: [SBGameRound] = []) {
+        self.id = UUID()
         self.name = name
         self.date = date
         self.players = players
@@ -45,14 +47,16 @@ extension SBGame {
         return Calendar.current.date(from: components) ?? Date() // Return generated date or fallback to current date
     }
     
-    static func mockGame() -> SBGame {
-        SBGame(name: randomName(), date: randomDate2024(), players: [SBPlayer.mock(), SBPlayer.mock(), SBPlayer.mock()], playerToVote: SBPlayer.mock())
+    static func mockGame(modelContext: ModelContext) -> SBGame {
+        let voter = SBPlayer.mock(modelContext: modelContext)
+        let players = [SBPlayer.mock(modelContext: modelContext), voter, SBPlayer.mock(modelContext: modelContext), SBPlayer.mock(modelContext: modelContext)]
+        return SBGame(name: randomName(), date: randomDate2024(), players: players, playerToVote: voter)
     }
-    static func mockGames() -> [SBGame] {
+    static func mockGames(modelContext: ModelContext) -> [SBGame] {
         [
-            mockGame(),
-            mockGame(),
-            mockGame()
+            mockGame(modelContext: modelContext),
+            mockGame(modelContext: modelContext),
+            mockGame(modelContext: modelContext)
         ]
     }
 }

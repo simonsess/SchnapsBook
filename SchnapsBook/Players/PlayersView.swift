@@ -3,7 +3,7 @@ import SwiftData
 
 struct PlayersView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var players: [SBPlayer]
+    @Query(filter: #Predicate<SBPlayer> { !$0.isDeleted })  private var players: [SBPlayer]
     @State private var showNewPlayerModal: Bool = false
     
     var body: some View {
@@ -42,13 +42,25 @@ struct PlayersView: View {
     private func deletePlayer(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(players[index])
+                players[index].isDeleted = true
             }
         }
     }
 }
 
+///Preview
+extension PlayersView {
+    @MainActor
+    static var preview: ModelContainer {
+        let container = try! ModelContainer(for: SBPlayer.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+        SBPlayer.mockPlayers().forEach({ player in
+            container.mainContext.insert(player)
+        })
+        return container
+    }
+}
+
 #Preview {
     PlayersView()
-        .modelContainer(for: SBPlayer.self, inMemory: true)
+        .modelContainer(PlayersView.preview)
 }

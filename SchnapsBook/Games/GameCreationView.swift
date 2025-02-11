@@ -88,10 +88,6 @@ struct GameCreationView: View {
             return
         }
         let selected = players.filter({selectedPlayers.contains($0.id)})
-        //        
-        //        selected.forEach({player in
-        //            print("\(player.modelContext == modelContext ? true : false) --contexes")
-        //        })
         let newGame = SBGame(name: gameName, date: Date(), players: [], playerToVote: voter)
         newGame.players = selected
         modelContext.insert(newGame)

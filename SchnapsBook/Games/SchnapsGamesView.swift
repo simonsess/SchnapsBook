@@ -12,7 +12,7 @@ struct SchnapsGamesView: View {
             List {
                 ForEach(games) { game in
                     NavigationLink {
-                        SchnapsGameView(game: game)
+                        SchnapsGameView(gameId: game.id)
                     } label: {
                         HStack {
                             Text("\(game.name)")
@@ -25,7 +25,7 @@ struct SchnapsGamesView: View {
                 //TODO: confirm delete
             }
             .navigationDestination(for: SBGame.self) { game in
-                SchnapsGameView(game: game)
+                SchnapsGameView(gameId: game.id)
             }
             .toolbar {
                 ToolbarItem {
@@ -58,7 +58,7 @@ extension SchnapsGamesView {
     @MainActor
     static var preview: ModelContainer {
         let container = try! ModelContainer(for: SBGame.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
-        SBGame.mockGames().forEach({ game in
+        SBGame.mockGames(modelContext: container.mainContext).forEach({ game in
             container.mainContext.insert(game)
         })
         return container

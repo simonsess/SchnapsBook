@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8CC70678-A126-4C1F-B0B0-3E4D6FA01F36"
-            shouldBeEnabled = "Yes"
+            uuid = "6B28A93B-BF9C-4DA7-BB94-DB4C02552422"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SchnapsBook/Games/Game/SchnapsGameView.swift"
+            filePath = "SchnapsBook/Games/Game/SchnapsGameViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "initSetup()"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "fetchGameData(id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

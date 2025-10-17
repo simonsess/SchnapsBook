@@ -12,7 +12,7 @@ struct SchnapsGamesView: View {
             List {
                 ForEach(games) { game in
                     NavigationLink {
-                        SchnapsGameView(gameId: game.id)
+                        SchnapsGameView(gameId: game.id, context: modelContext)
                     } label: {
                         HStack {
                             Text("\(game.name)")
@@ -24,9 +24,9 @@ struct SchnapsGamesView: View {
                 .onDelete(perform: deleteGame)
                 //TODO: confirm delete
             }
-            .navigationDestination(for: SBGame.self) { game in
-                SchnapsGameView(gameId: game.id)
-            }
+//            .navigationDestination(for: SBGame.self) { game in
+//                SchnapsGameView(gameId: game.id, context: modelContext)
+//            }
             .toolbar {
                 ToolbarItem {
                     Button(action: {

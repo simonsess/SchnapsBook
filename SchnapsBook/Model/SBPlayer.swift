@@ -6,14 +6,18 @@ final class SBPlayer {
     var id: UUID
     var name: String
     var lastPlayed: Date?
-    var initScore: Int
+    var score: Int
     var isDeleted: Bool = false
     
-    init(id: UUID, name: String, lastPlayed: Date? = nil, initScore: Int = 0) {
+    init(id: UUID, name: String, lastPlayed: Date? = nil, score: Int = 0) {
         self.id = id
         self.name = name
         self.lastPlayed = lastPlayed
-        self.initScore = initScore
+        self.score = score
+    }
+    
+    func resetScore() {
+        score = 0
     }
 }
 
@@ -33,7 +37,7 @@ extension SBPlayer {
 
 extension SBPlayer {
     static func mock(modelContext: ModelContext) -> SBPlayer {
-        return SBPlayer(id: UUID(), name: "John Doe", lastPlayed: Date() - 4, initScore: 0)
+        return SBPlayer(id: UUID(), name: "John Doe", lastPlayed: Date() - 4, score: 0)
 //        modelContext.insert(player) //Why do we dont need to add player int context?
     }
 }

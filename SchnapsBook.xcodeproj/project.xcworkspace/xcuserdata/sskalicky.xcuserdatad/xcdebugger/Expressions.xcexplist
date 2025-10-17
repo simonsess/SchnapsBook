@@ -3,10 +3,54 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #2 in SBGame.addRound(round:):SBGame.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "player.name">
+            </PersistentString>
+            <PersistentString
+               value = "player.score">
+            </PersistentString>
+            <PersistentString
+               value = "round.voterTeam.first?.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #3 in SchnapsGameView.body.getter:SchnapsGameView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SBRoundEntryView.init(gameId:):SBRoundEntryView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "games">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "GameCreationView.createGame():GameCreationView.swift">
          <PersistentStrings>
             <PersistentString
                value = "selectedPlayers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SBGame.addRound(round:):SBGame.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "players">
+            </PersistentString>
+            <PersistentString
+               value = "voterIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SBGameRound.voterTeam.getter:SBGameRound.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "voter.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

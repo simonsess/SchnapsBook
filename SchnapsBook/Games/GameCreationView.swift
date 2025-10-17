@@ -5,14 +5,15 @@ struct GameCreationView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Query private var players: [SBPlayer]
-    @State private var selectedPlayers: [UUID] = []
-    @State private var gameName: String = "gggyyyeerr"
+    @State private var selectedPlayers: [Int: UUID] = [:]
+    @State private var gameName: String = Date().ISO8601Format()
     
     @Binding var navigationPath: NavigationPath
     
     var canCreate: Bool {
         selectedPlayers.count == 4 && !gameName.isEmpty
     }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -22,31 +23,7 @@ struct GameCreationView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     Section(header: Text("Select 4 Players")) {
-                        List(players, id: \.self) { player in
-                            HStack {
-                                Text(player.name)
-                                Spacer()
-                                if !selectedPlayers.isEmpty {
-                                    if selectedPlayers[0] == player.id {
-                                        Text("Voter")
-                                            .foregroundStyle(.tertiary)
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .foregroundColor(.green)
-                                    } else if selectedPlayers.contains(player.id) {
-                                        if let order = selectedPlayers.firstIndex(where: { $0 == player.id }) {
-                                            Text("\(order + 1)")
-                                                .foregroundStyle(.tertiary)
-                                        }
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .foregroundColor(.blue)
-                                    }
-                                }
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                toggleSelection(player)
-                            }
-                        }
+                        pLayerList()
                     }
                 }
                 Spacer()
@@ -70,16 +47,47 @@ struct GameCreationView: View {
             .navigationTitle("New Game")
         }
     }
+    @ViewBuilder
+    private func pLayerList() -> some View {
+        List(players, id: \.self) { player in
+            HStack {
+                Text(player.name)
+                Spacer()
+                if !selectedPlayers.isEmpty {
+                    if selectedPlayers[0] == player.id {
+                        Text("Voter")
+                            .foregroundStyle(.tertiary)
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                    } else if selectedPlayers.contains(value: player.id) {
+                        if let order = selectedPlayers.key(for: player.id) {
+                            Text("\(order + 1)")
+                                .foregroundStyle(.tertiary)
+                        }
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.blue)
+                    }
+                }
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                toggleSelection(player)
+            }
+        }
+    }
     
     private func toggleSelection(_ player: SBPlayer) {
-        guard !selectedPlayers.contains(player.id) else {
-            selectedPlayers.removeAll(where: { $0 == player.id })
+        
+        guard !selectedPlayers.contains(value: player.id) else {
+            if let (rank, _) = selectedPlayers.first(where: { $0.value == player.id }) {
+                selectedPlayers.removeValue(forKey: rank)
+            }
             return
         }
         guard selectedPlayers.count < 4 else {
             return
         }
-        selectedPlayers.append(player.id)
+        selectedPlayers.addNewEntry(for: selectedPlayers.count, value: player.id)
     }
     
     private func createGame() {
@@ -87,10 +95,10 @@ struct GameCreationView: View {
             //error toast
             return
         }
-        let selected = players.filter({selectedPlayers.contains($0.id)})
-        let newGame = SBGame(name: gameName, date: Date(), players: [], playerToVote: voter)
-        newGame.players = selected
+        let selected = players.filter({selectedPlayers.contains(value: $0.id)})
+        let newGame = SBGame(name: gameName, date: Date(), players: selected, playerToVote: voter, rounds: [], playerOrder: selectedPlayers)
         modelContext.insert(newGame)
+        try? modelContext.save()
         dismiss()
         navigationPath.append(newGame)
     }

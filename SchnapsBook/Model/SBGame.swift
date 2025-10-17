@@ -2,21 +2,53 @@ import Foundation
 import SwiftData
 
 @Model
+final class SBGameRoundLink: ObservableObject {
+    var index: Int
+    var round: SBGameRound
+    
+    init(index: Int, round: SBGameRound) {
+        self.index = index
+        self.round = round
+    }
+}
+
+@Model
 final class SBGame: ObservableObject {
     var id: UUID
     var name: String
     var date: Date
     var players: [SBPlayer]
-    var playerToVote: SBPlayer?
-    var rounds: [SBGameRound]
+    var playerToVote: SBPlayer
+    var rounds: [SBGameRoundLink]
+    var playerOrder: [Int: UUID]
     
-    init(name: String, date: Date, players: [SBPlayer], playerToVote: SBPlayer, rounds: [SBGameRound] = []) {
+    private var voterIndex = 0
+    
+    init(name: String, date: Date, players: [SBPlayer], playerToVote: SBPlayer, rounds: [SBGameRoundLink], playerOrder: [Int : UUID]) {
         self.id = UUID()
         self.name = name
         self.date = date
         self.players = players
         self.playerToVote = playerToVote
         self.rounds = rounds
+        self.playerOrder = playerOrder
+    }
+    
+    var debugDescription: String {
+        "game(id: \(id), name: \(name))"
+    }
+
+    func playerDetail(for player: SBPlayer) {
+        print("\(player.name) - \(player.score)")
+    }
+    func playersDetails() {
+        players.forEach({ player in
+           playerDetail(for: player)
+        })
+    }
+    
+    func sortedPlayers() -> [SBPlayer] {
+        players.sorted(byOrder: playerOrder)
     }
 }
 
@@ -50,7 +82,8 @@ extension SBGame {
     static func mockGame(modelContext: ModelContext) -> SBGame {
         let voter = SBPlayer.mock(modelContext: modelContext)
         let players = [SBPlayer.mock(modelContext: modelContext), voter, SBPlayer.mock(modelContext: modelContext), SBPlayer.mock(modelContext: modelContext)]
-        return SBGame(name: randomName(), date: randomDate2024(), players: players, playerToVote: voter)
+        let order: [Int: UUID] = Dictionary(uniqueKeysWithValues: players.enumerated().map { ($0, $1.id) })
+        return SBGame(name: randomName(), date: randomDate2024(), players: players, playerToVote: voter, rounds: [], playerOrder: order)
     }
     static func mockGames(modelContext: ModelContext) -> [SBGame] {
         [
@@ -60,5 +93,3 @@ extension SBGame {
         ]
     }
 }
-
-

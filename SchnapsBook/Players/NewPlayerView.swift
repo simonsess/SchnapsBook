@@ -22,6 +22,18 @@ struct NewPlayerView: View {
                 }
                 
                 Spacer()
+                Button(action: {
+                    var newPlayer = SBPlayer(id: UUID(), name: "Simon")
+                    modelContext.insert(newPlayer)
+                    newPlayer = SBPlayer(id: UUID(), name: "Maty")
+                   modelContext.insert(newPlayer)
+                    newPlayer = SBPlayer(id: UUID(), name: "Sviro")
+                   modelContext.insert(newPlayer)
+                    newPlayer = SBPlayer(id: UUID(), name: "Mario")
+                   modelContext.insert(newPlayer)
+                }, label: {
+                    Text("create 4 players")
+                })
                 Button(action: createPlayer) {
                     Text("Create")
                         .frame(maxWidth: .infinity)

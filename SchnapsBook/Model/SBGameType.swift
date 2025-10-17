@@ -1,7 +1,26 @@
 import Foundation
 
 enum SBGameType: Codable {
-    case basic, six, twelve, quietDurch, durch, notPlaying, Cheat
+    case basic(with33: Bool), six, twelve, quietDurch, durch, notPlaying, cheat
+    
+    var points: Int {
+        switch self {
+        case .basic(let with33):
+            2 * (with33 ? 1 : 2)
+        case .notPlaying:
+            4
+        case .six:
+            6
+        case .twelve:
+            12
+        case .quietDurch:
+            18
+        case .durch:
+            36
+        case .cheat:
+            4
+        }
+    }
 }
 
 enum SBWater: Codable {

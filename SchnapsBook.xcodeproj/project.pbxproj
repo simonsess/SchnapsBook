@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1070ED5C2E9EBD6E00E1D151 /* SBRoundEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */; };
+		1070ED5F2E9ED86700E1D151 /* BoolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED5E2E9ED86100E1D151 /* BoolExtension.swift */; };
+		1070ED612E9FDAD600E1D151 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */; };
+		1070ED632EA10AF900E1D151 /* SchnapsGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED622EA10AF200E1D151 /* SchnapsGameViewModel.swift */; };
 		1072E9C32D4FDE01000F7B20 /* SBPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9C22D4FDE01000F7B20 /* SBPlayer.swift */; };
 		1072E9C52D4FDE64000F7B20 /* SBGameRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9C42D4FDE64000F7B20 /* SBGameRound.swift */; };
 		1072E9C72D4FDE73000F7B20 /* SBGameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9C62D4FDE73000F7B20 /* SBGameType.swift */; };
@@ -26,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBRoundEntryView.swift; sourceTree = "<group>"; };
+		1070ED5E2E9ED86100E1D151 /* BoolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolExtension.swift; sourceTree = "<group>"; };
+		1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		1070ED622EA10AF200E1D151 /* SchnapsGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsGameViewModel.swift; sourceTree = "<group>"; };
 		1072E9C22D4FDE01000F7B20 /* SBPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBPlayer.swift; sourceTree = "<group>"; };
 		1072E9C42D4FDE64000F7B20 /* SBGameRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBGameRound.swift; sourceTree = "<group>"; };
 		1072E9C62D4FDE73000F7B20 /* SBGameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBGameType.swift; sourceTree = "<group>"; };
@@ -56,6 +64,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1070ED5D2E9ED85900E1D151 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */,
+				1070ED5E2E9ED86100E1D151 /* BoolExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		1072E9C12D4FDDE3000F7B20 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +124,7 @@
 		10D862F72D3BD5A1000C66E6 /* SchnapsBook */ = {
 			isa = PBXGroup;
 			children = (
+				1070ED5D2E9ED85900E1D151 /* Utils */,
 				1072E9C12D4FDDE3000F7B20 /* Model */,
 				10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */,
 				10D8630C2D3BD63E000C66E6 /* Main */,
@@ -138,7 +156,9 @@
 		10D8630D2D3BD656000C66E6 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				1070ED622EA10AF200E1D151 /* SchnapsGameViewModel.swift */,
 				10D863102D3BD8B0000C66E6 /* SchnapsGameView.swift */,
+				1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -218,10 +238,14 @@
 				1072E9F32D512FDE000F7B20 /* GameCreationView.swift in Sources */,
 				1072E9ED2D50FE56000F7B20 /* SchnapsGamesView.swift in Sources */,
 				10D862F92D3BD5A1000C66E6 /* SchnapsBookApp.swift in Sources */,
+				1070ED632EA10AF900E1D151 /* SchnapsGameViewModel.swift in Sources */,
 				10D8630B2D3BD607000C66E6 /* SchnapsViewModel.swift in Sources */,
 				10D863112D3BD8B0000C66E6 /* SchnapsGameView.swift in Sources */,
+				1070ED5F2E9ED86700E1D151 /* BoolExtension.swift in Sources */,
 				1072E9EF2D5104AF000F7B20 /* PlayerDetail.swift in Sources */,
+				1070ED612E9FDAD600E1D151 /* DictionaryExtension.swift in Sources */,
 				1072E9EA2D50FD10000F7B20 /* PlayersView.swift in Sources */,
+				1070ED5C2E9EBD6E00E1D151 /* SBRoundEntryView.swift in Sources */,
 				1072E9C92D4FE23F000F7B20 /* SBGame.swift in Sources */,
 				1072E9C52D4FDE64000F7B20 /* SBGameRound.swift in Sources */,
 				1072E9CB2D4FE39C000F7B20 /* SBSchnapsBook.swift in Sources */,
@@ -368,6 +392,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -397,6 +422,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

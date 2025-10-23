@@ -60,9 +60,14 @@ struct SBRoundEntryView: View {
                 .disabled(!cheaterSwitch)
                 
                 Button("Submit") {
-                    guard let game = viewModel.game, cheater != UUID.zero else {
+                    guard let game = viewModel.game else {
                         //error
                         return
+                    }
+                    if cheaterSwitch {
+                        guard cheater != UUID.zero else {
+                            return
+                        }
                     }
                     let round = SBGameRound(voter: game.playerToVote, coop: viewModel.playerFromId(id: teammate.id), voterWon: voterWon, gameType: gameType, kontra: kontra, cheater: viewModel.playerFromId(id: cheater))
                     viewModel.addRound(round: round)

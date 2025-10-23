@@ -128,13 +128,12 @@ class SchnapsGameViewModel: ObservableObject {
             playerScore[player.id] = score
         })
         scoreRounds.appendLast(playerScore)
-        
-//        guard round.cheater == nil else {
-//            return
-//        }
+        setNextPlayerToVote()
+    }
+    
+    private func setNextPlayerToVote() {
         voterIndex = (voterIndex + 1) % 4
-        let player = sortedPlayers[voterIndex]
-        game?.playerToVote = player
+        game?.playerToVote = sortedPlayers[voterIndex]
     }
     
     private func roundScoreForPlayer(round: SBGameRound, player: SBPlayer) -> Int {

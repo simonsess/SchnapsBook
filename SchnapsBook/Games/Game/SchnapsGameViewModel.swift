@@ -1,11 +1,24 @@
 import Foundation
+import SwiftUI
 import SwiftData
 import Observation
+
+struct Teammate: Identifiable, Hashable {
+    var id: UUID
+    var name: String?
+}
+
+extension Teammate {
+    static var noTeammates: Teammate {
+        Teammate(id: UUID.zero, name: nil)
+    }
+}
 
 class SchnapsGameViewModel: ObservableObject {
     private var context: ModelContext
     private var playerScore: [UUID: Int] = [:]
     private var playerOrder: [Int: UUID] = [:]
+    private let gameId: UUID
     public var rounds: [Int: SBGameRound] = [:]
     public var game: SBGame?
     
@@ -18,12 +31,53 @@ class SchnapsGameViewModel: ObservableObject {
         game?.players.sorted(byOrder: playerOrder) ?? []
     }
     
+    var newRoundVoter: String {
+        game?.playerToVote.name ?? "Unknown"
+    }
+    
+    var gamePlayersSet: [Teammate] {
+        var coopPlayers: [Teammate] = [Teammate.noTeammates]
+        for player in sortedPlayers {
+            coopPlayers.append(Teammate(id: player.id, name: player.name))
+        }
+        return coopPlayers
+    }
+    
+    var coopPlayersSet: [Teammate] {
+        var players = gamePlayersSet
+        guard let game else {
+            return players
+        }
+        players.removeAll(where: { $0.id == game.playerToVote.id })
+        return players
+    }
+    
+    func playerName(for id: UUID) -> String {
+        game?.players.first(where: { $0.id == id })?.name ?? "notFound"
+    }
+    
+    func playerFromId(id: UUID) -> SBPlayer? {
+        guard id != UUID.zero else {
+            return nil
+        }
+        return game?.players.first(where: { $0.id == id })
+    }
+    
+    var newRoundNumber: Int {
+        rounds.count
+    }
+    
 
     init(gameId: UUID, context: ModelContext) {
         self.context = context
-        Task {
-            await fetchGameData(id: gameId)
+        self.gameId = gameId
+    }
+    
+    public func isPLayerVoter(round: SBGameRound?, playerRank: Int) -> Bool {
+        guard let round else {
+            return false
         }
+        return round.voter == sortedPlayers[playerRank]
     }
     
     public func isPlayerVoterTeam(round: SBGameRound?, playerRank: Int) -> Bool {
@@ -34,18 +88,34 @@ class SchnapsGameViewModel: ObservableObject {
         return player == round.voter || player == round.coop
     }
     
+    public func isPlayerInWinningTeam(round: SBGameRound?, playerRank: Int) -> Bool {
+        isPlayerVoterTeam(round: round, playerRank: playerRank) ^ (round?.voterWon ?? false)
+    }
+    
+    public func cellBackground(in round: SBGameRound?, for playerRank: Int) -> Color {
+        let player = sortedPlayers[playerRank]
+        guard let round else {
+            return .yellow
+        }
+        guard round.cheater == nil else {
+            return round.cheater == player ? .red : .clear
+        }
+        return isPlayerInWinningTeam(round: round, playerRank: playerRank) ? Color.mint : Color.clear
+    }
+    
     public func addRound(round: SBGameRound) {
         guard let game else {
             return
         }
         game.rounds.append(SBGameRoundLink(index: game.rounds.count, round: round))
-        try? context.save()
+        rounds.appendLast(round)
         processNewRound(round: round)
+        try? context.save()
     }
     
-    public func processRounds(rounds: [SBGameRound]) {
+    public func processRounds() {
         rounds.forEach({ round in
-            processNewRound(round: round)
+            processNewRound(round: round.value)
         })
     }
     
@@ -57,17 +127,19 @@ class SchnapsGameViewModel: ObservableObject {
             }
             playerScore[player.id] = score
         })
+        scoreRounds.appendLast(playerScore)
+        
+//        guard round.cheater == nil else {
+//            return
+//        }
         voterIndex = (voterIndex + 1) % 4
-        print("newVoterIndex: \(voterIndex)")
         let player = sortedPlayers[voterIndex]
         game?.playerToVote = player
-        
-        scoreRounds.appendLast(playerScore)
     }
     
-    func roundScoreForPlayer(round: SBGameRound, player: SBPlayer) -> Int {
+    private func roundScoreForPlayer(round: SBGameRound, player: SBPlayer) -> Int {
         guard round.cheater == nil else {
-            return round.gameType.points * (round.cheater == player ? -1 : 1)
+            return round.gameType.points * round.kontra.value * (round.cheater == player ? -3 : 1)
         }
         var voterTeam: [SBPlayer] = []
         voterTeam.append(round.voter)
@@ -81,15 +153,15 @@ class SchnapsGameViewModel: ObservableObject {
         }
         let playerInVoterTeam = voterTeam.contains(player)
         return
-            (round.gameType.points * (playerInVoterTeam ? voterAloneMultiplier : 1))
+            (round.gameType.points * (playerInVoterTeam ? voterAloneMultiplier : 1)) * round.kontra.value
                 *
             (round.voterWon ^ playerInVoterTeam ? 1 : -1)
     }
     
     @MainActor
-    private func fetchGameData(id: UUID) async {
+    public func fetchGameData() async {
         let descriptor = FetchDescriptor<SBGame>(
-                predicate: #Predicate { $0.id == id }
+                predicate: #Predicate { $0.id == gameId }
             )
         guard let game = try? context.fetch(descriptor).first else {
             return
@@ -106,5 +178,7 @@ class SchnapsGameViewModel: ObservableObject {
         self.game = game
         
         gameName = game.name
+        
+        processRounds()
     }
 }

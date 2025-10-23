@@ -31,6 +31,7 @@ struct NewPlayerView: View {
                    modelContext.insert(newPlayer)
                     newPlayer = SBPlayer(id: UUID(), name: "Mario")
                    modelContext.insert(newPlayer)
+                    try? modelContext.save()
                 }, label: {
                     Text("create 4 players")
                 })
@@ -59,6 +60,7 @@ struct NewPlayerView: View {
     private func createPlayer() {
         let newPlayer = SBPlayer(id: UUID(), name: name)
         modelContext.insert(newPlayer)
+        try? modelContext.save()
         dismiss()
     }
 }

@@ -33,23 +33,6 @@ final class SBGame: ObservableObject {
         self.rounds = rounds
         self.playerOrder = playerOrder
     }
-    
-    var debugDescription: String {
-        "game(id: \(id), name: \(name))"
-    }
-
-    func playerDetail(for player: SBPlayer) {
-        print("\(player.name) - \(player.score)")
-    }
-    func playersDetails() {
-        players.forEach({ player in
-           playerDetail(for: player)
-        })
-    }
-    
-    func sortedPlayers() -> [SBPlayer] {
-        players.sorted(byOrder: playerOrder)
-    }
 }
 
 extension SBGame {
@@ -80,8 +63,8 @@ extension SBGame {
     }
     
     static func mockGame(modelContext: ModelContext) -> SBGame {
-        let voter = SBPlayer.mock(modelContext: modelContext)
-        let players = [SBPlayer.mock(modelContext: modelContext), voter, SBPlayer.mock(modelContext: modelContext), SBPlayer.mock(modelContext: modelContext)]
+        let voter = SBPlayer.mock(postFix: "ff##", modelContext: modelContext)
+        let players = [SBPlayer.mock(postFix: "11@1", modelContext: modelContext), voter, SBPlayer.mock(modelContext: modelContext), SBPlayer.mock(modelContext: modelContext)]
         let order: [Int: UUID] = Dictionary(uniqueKeysWithValues: players.enumerated().map { ($0, $1.id) })
         return SBGame(name: randomName(), date: randomDate2024(), players: players, playerToVote: voter, rounds: [], playerOrder: order)
     }

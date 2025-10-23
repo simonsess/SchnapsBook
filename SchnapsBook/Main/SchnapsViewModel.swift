@@ -9,8 +9,6 @@ class SchnapsViewModel: ObservableObject {
 
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
-//        fetchGames()
-//        fetchPlayers()
     }
     
     private func fetchPlayers() {

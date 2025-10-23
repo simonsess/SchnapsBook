@@ -6,42 +6,54 @@ struct SchnapsGamesView: View {
     @Query private var games: [SBGame]
     @State private var showNewGameModal: Bool = false
     @State private var navigationPath = NavigationPath()
+    @State private var createdGame: SBGame? = nil
     
     var body: some View {
         NavigationStack(path: $navigationPath) {
             List {
                 ForEach(games) { game in
-                    NavigationLink {
-                        SchnapsGameView(gameId: game.id, context: modelContext)
-                    } label: {
-                        HStack {
-                            Text("\(game.name)")
-                            Spacer()
-                            Text(game.date, format: Date.FormatStyle(date: .numeric, time: .omitted))
-                        }
+                    HStack {
+                        Text("\(game.name)")
+                        Spacer()
+                        Text(game.date, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                    }
+                    .onTapGesture {
+                        navigationPath.append(game)
                     }
                 }
                 .onDelete(perform: deleteGame)
                 //TODO: confirm delete
             }
-//            .navigationDestination(for: SBGame.self) { game in
-//                SchnapsGameView(gameId: game.id, context: modelContext)
-//            }
+            .navigationDestination(for: SBGame.self) { game in
+                SchnapsGameView(gameId: game.id, context: modelContext)
+                    .toolbar(.hidden, for: .tabBar)
+            }
+            .navigationDestination(for: SBGame?.self) { game in
+                if let game {
+                    SchnapsGameView(gameId: game.id, context: modelContext)
+                        .toolbar(.hidden, for: .tabBar)
+                }
+            }
             .toolbar {
                 ToolbarItem {
                     Button(action: {
                         showNewGameModal = true
                     }, label: {
-                        Label("Add Item", systemImage: "plus")
+                        Label("Add Game", systemImage: "plus")
                     })
                 }
             }
             .navigationTitle("Schnapser")
         }
-        .fullScreenCover(isPresented: $showNewGameModal) {
-            GameCreationView(navigationPath: $navigationPath)
+        .fullScreenCover(isPresented: $showNewGameModal, onDismiss: {
+            guard let createdGame else {
+                return
+            }
+            navigationPath.append(createdGame)
+        }) {
+            GameCreationView(createdGame: $createdGame)
+                .toolbar(.hidden, for: .tabBar)
         }
-        
     }
     
     private func deleteGame(offsets: IndexSet) {

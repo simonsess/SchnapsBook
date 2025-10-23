@@ -8,7 +8,7 @@ struct GameCreationView: View {
     @State private var selectedPlayers: [Int: UUID] = [:]
     @State private var gameName: String = Date().ISO8601Format()
     
-    @Binding var navigationPath: NavigationPath
+    @Binding var createdGame: SBGame?
     
     var canCreate: Bool {
         selectedPlayers.count == 4 && !gameName.isEmpty
@@ -77,7 +77,6 @@ struct GameCreationView: View {
     }
     
     private func toggleSelection(_ player: SBPlayer) {
-        
         guard !selectedPlayers.contains(value: player.id) else {
             if let (rank, _) = selectedPlayers.first(where: { $0.value == player.id }) {
                 selectedPlayers.removeValue(forKey: rank)
@@ -99,8 +98,8 @@ struct GameCreationView: View {
         let newGame = SBGame(name: gameName, date: Date(), players: selected, playerToVote: voter, rounds: [], playerOrder: selectedPlayers)
         modelContext.insert(newGame)
         try? modelContext.save()
+        createdGame = newGame
         dismiss()
-        navigationPath.append(newGame)
     }
 }
 
@@ -117,6 +116,8 @@ extension GameCreationView {
 }
 
 #Preview {
-    GameCreationView(navigationPath: Binding(get: {NavigationPath()}, set: {_ in }))
+    let game = try! SchnapsGameView.preview.mainContext.fetch(FetchDescriptor<SBGame>()).first!
+    let context = GameCreationView.preview
+    GameCreationView(createdGame: Binding(get: { game }, set: {_ in }))
         .modelContainer(GameCreationView.preview)
 }

@@ -10,18 +10,31 @@ struct NewPlayerView: View {
         NavigationView {
             VStack {
                 Form {
-                    Section(header: Text("Player Information")) {
+                    Section(content: {
                         LabeledContent {
                             TextField("Enter your name", text: $name)
-                                .textFieldStyle(RoundedBorderTextFieldStyle()) // Optional styling
+                                .foregroundStyle(Color.foregroundPrimary)
                         } label: {
                             Text("Name")
                                 .foregroundStyle(.secondary)
                         }
-                    }
+                    }, header: {
+                            Text("Player Information")
+                            .foregroundStyle(Color.foregroundPrimary)
+                        
+                    })
+                    .listRowBackground(Color.backgroundSecondary)
                 }
+                .formStyling()
                 
-                Spacer()
+                SBPrimaryButton(action: createPlayer, title: "Create")
+                    .disabledStyling(isDisabled: name.isEmpty)
+                
+                SBSecondaryButton(action: {
+                    dismiss()
+                }, title: "Dismiss")
+                
+                /*
                 Button(action: {
                     var newPlayer = SBPlayer(id: UUID(), name: "Simon")
                     modelContext.insert(newPlayer)
@@ -35,23 +48,9 @@ struct NewPlayerView: View {
                 }, label: {
                     Text("create 4 players")
                 })
-                Button(action: createPlayer) {
-                    Text("Create")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(name.isEmpty ? Color.gray : Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .disabled(name.isEmpty)
-                .padding()
-                Button("Dismiss") {
-                    dismiss()
-                }
-                .buttonStyle(.borderless)
-                .foregroundColor(.red)
-                .padding()
+                */
             }
+            .background(Color.backgroundPrimary)
             .navigationTitle("New Player")
         }
     }

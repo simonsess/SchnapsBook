@@ -16,66 +16,90 @@ struct SBRoundEntryView: View {
     @State private var kontra: SBKontra = .normal
     
     var body: some View {
-        VStack {
-            Text("Round \(roundNumber + 1)")
-                .font(.subheadline)
-            Text("Voter: \(voter)")
-                .font(.headline)
-            Form {
-                Picker("Teammate", selection: $teammate) {
-                    ForEach(viewModel.coopPlayersSet) { mate in
-                        Text(mate.name ?? "Alone").tag(mate)
-                    }
-                }
-                .pickerStyle(.menu)
-                .disabled(cheaterSwitch)
-                
-                Toggle("Voter team won", isOn: $voterWon)
-                .disabled(cheaterSwitch)
-                
-                Picker("Type", selection: $gameType) {
-                    ForEach(SBGameType.allCases) { type in
-                        Text(type.name).tag(type)
-                    }
-                }
-                .pickerStyle(.menu)
-                
-                Picker("Contra", selection: $kontra) {
-                    ForEach(SBKontra.allCases) { type in
-                        Text(type.displayName).tag(type)
-                    }
-                }
-                .pickerStyle(.menu)
-                
-                Spacer()
-                
-                Toggle("Cheater", isOn: $cheaterSwitch)
-                
-                Picker("Cheater", selection: $cheater) {
-                    ForEach(viewModel.gamePlayersSet) { player in
-                        Text(player.name ?? "").tag(player.id)
-                    }
-                }
-                .pickerStyle(.menu)
-                .disabled(!cheaterSwitch)
-                
-                Button("Submit") {
-                    guard let game = viewModel.game else {
-                        //error
-                        return
-                    }
-                    if cheaterSwitch {
-                        guard cheater != UUID.zero else {
-                            return
+        ZStack {
+            Color.backgroundPrimary
+                .ignoresSafeArea()
+            VStack {
+                Text("Round \(roundNumber + 1)")
+                    .font(.subheadline)
+                    .foregroundStyle(Color.foregroundPrimary)
+                Text("Voter: \(voter)")
+                    .font(.largeTitle)
+                    .foregroundStyle(Color.foregroundPrimary)
+                Form {
+                    Section(content: {
+                        Picker("Teammate", selection: $teammate) {
+                            ForEach(viewModel.coopPlayersSet) { mate in
+                                Text(mate.name ?? "Alone").tag(mate)
+                            }
                         }
-                    }
-                    let round = SBGameRound(voter: game.playerToVote, coop: viewModel.playerFromId(id: teammate.id), voterWon: voterWon, gameType: gameType, kontra: kontra, cheater: viewModel.playerFromId(id: cheater))
-                    viewModel.addRound(round: round)
-                    dismiss()
+                        .foregroundStyle(Color.foregroundPrimary)
+                        .pickerStyle(.menu)
+                        .disabled(cheaterSwitch)
+                        
+                        Toggle("Voter team won", isOn: $voterWon)
+                            .disabled(cheaterSwitch)
+                            .tint(Color.foregroundTabTint)
+                            .foregroundStyle(Color.foregroundPrimary)
+                        
+                        Picker("Type", selection: $gameType) {
+                            ForEach(SBGameType.allCases) { type in
+                                Text(type.name).tag(type)
+                            }
+                        }
+                        .foregroundStyle(Color.foregroundPrimary)
+                        .pickerStyle(.menu)
+                        
+                        Picker("Contra", selection: $kontra) {
+                            ForEach(SBKontra.allCases) { type in
+                                Text(type.displayName).tag(type)
+                            }
+                        }
+                        .foregroundStyle(Color.foregroundPrimary)
+                        .pickerStyle(.menu)
+                        
+                        Spacer()
+                        
+                        Toggle("Cheater", isOn: $cheaterSwitch)
+                            .tint(Color.foregroundTabTint)
+                            .foregroundStyle(Color.foregroundPrimary)
+                        
+                        Picker("Cheater", selection: $cheater) {
+                            ForEach(viewModel.gamePlayersSet) { player in
+                                Text(player.name ?? "").tag(player.id)
+                            }
+                        }
+                        .foregroundStyle(Color.foregroundPrimary)
+                        .pickerStyle(.menu)
+                        .disabled(!cheaterSwitch)
+                    }, header: {
+                        Text("Round")
+                    })
+                    .listRowBackground(Color.backgroundSecondary)
                 }
+                .formStyling()
+                SBPrimaryButton(action: addRound, title: "Submit")
+                    .disabledStyling(isDisabled: cheaterSwitch &&  cheater == UUID.zero)
+            }
+            .background(Color.backgroundPrimary)
+            .padding(.vertical)
+            .ignoresSafeArea(.container, edges: .bottom)
+        }
+    }
+    
+    private func addRound() {
+        guard let game = viewModel.game else {
+            //error
+            return
+        }
+        if cheaterSwitch {
+            guard cheater != UUID.zero else {
+                return
             }
         }
-        .padding(.vertical)
+        let round = SBGameRound(voter: game.playerToVote, coop: viewModel.playerFromId(id: teammate.id), voterWon: voterWon, gameType: gameType, kontra: kontra, cheater: viewModel.playerFromId(id: cheater))
+        viewModel.addRound(round: round)
+        dismiss()
     }
 }
 

@@ -2,6 +2,14 @@ import SwiftUI
 import SwiftData
 
 struct SchnapsMainView: View {
+    init() {
+        UINavigationBar.setCustomTitleColor(UIColor.foregroundPrimary)
+//        let unselectedColor = UIColor.foregroundSecondary
+//        UITabBar.appearance().unselectedItemTintColor = unselectedColor
+//        let selectedColor = UIColor.foregroundPrimary
+//        UITabBar.appearance().tintColor = selectedColor
+    }
+    
     var body: some View {
         TabView {
             SchnapsGamesView()
@@ -10,8 +18,10 @@ struct SchnapsMainView: View {
                 }
             
             PlayersView()
+                
                 .tabItem {
                     Label("Players", systemImage: "person.3.fill")
+                        .foregroundStyle(Color.foregroundPrimary)
                 }
             
 //            SettingsView()
@@ -19,7 +29,7 @@ struct SchnapsMainView: View {
 //                    Label("Settings", systemImage: "gear")
 //                }
         }
-        .accentColor(.blue)
+        .tint(Color.foregroundTabTint)
     }
 }
 

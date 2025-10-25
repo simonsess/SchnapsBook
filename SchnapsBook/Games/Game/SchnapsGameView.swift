@@ -23,10 +23,11 @@ struct SchnapsGameView: View {
                         .padding(.bottom, 5)
                 })
             }
+            .padding(.horizontal, 2)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .scrollBounceBehavior(.basedOnSize)
-        .background(.gray)
+        .background(.backgroundPrimary)
         .toolbar{
             ToolbarItem(placement: .primaryAction, content: {
                 Button(action: {
@@ -35,10 +36,19 @@ struct SchnapsGameView: View {
                     Label("Add Item", systemImage: "plus")
                 })
             })
+
+            ToolbarItem(placement: .secondaryAction) {
+                Button("Reset Scores", action: {/* TODO: Implement reset logic */})
+                    .tint(.red)
+            }
+            ToolbarItem(placement: .secondaryAction) {
+                Button("Export Data", action: {/* TODO: Implement export logic */})
+            }
+            ToolbarItem(placement: .secondaryAction) {
+                Button("Settings", action: {/* TODO: Implement settings logic */})
+                    .tint(.yellow)
+            }
             
-            ToolbarItem(placement: .secondaryAction, content: {
-                Text("actions")
-            })
         }
         .sheet(isPresented: $roundSheet, content: {
             SBRoundEntryView(viewModel: viewModel, voter: viewModel.newRoundVoter, roundNumber: viewModel.newRoundNumber)
@@ -59,19 +69,20 @@ struct SchnapsGameView: View {
                 .font(.title2)
                 .frame(maxWidth: 30, maxHeight: .infinity)
                 .padding(.vertical, 5)
-                .background(Color(UIColor.lightGray))
+                .background(Color.backgroundTertiary)
             ForEach(viewModel.sortedPlayers, id: \.self) { player in
                 Text(player.name)
                     .font(.title2)
                     .padding(.vertical, 5)
                     .frame(maxWidth: .infinity)
-                    .background(Color(UIColor.lightGray))
+                    .background(Color.backgroundTertiary)
                     .lineLimit(1)
                     .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
         }
-        .background(.gray)
+        .foregroundStyle(.foregroundPrimary)
+        .background(.backgroundPrimary)
     }
     
     @ViewBuilder
@@ -81,10 +92,11 @@ struct SchnapsGameView: View {
                 Text("\(roundNo + 1)")
                     .frame(maxWidth: 30)
                     .font(.body)
+                    .foregroundStyle(.foregroundPrimary)
                 Rectangle()
                     .frame(maxHeight: .infinity)
-                    .frame(width: 1)
-                    .background(Color.black)
+                    .frame(width: 2)
+                    .foregroundStyle(.foregroundPrimary)
             }
             let scores = viewModel.scoreRounds[roundNo]
             let round = viewModel.rounds[roundNo]
@@ -93,10 +105,12 @@ struct SchnapsGameView: View {
                 if let scores, let score = scores[player.id] {
                     Text("\(score)")
                         .cellFontStyle(viewModel.isPLayerVoter(round: round, playerRank: i))
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(viewModel.cellBackground(in: round, for: i))
                         .minimumScaleFactor(0.5)
-                        .frame(maxHeight: .infinity)
+                        .padding(.vertical, 1)
+                        .foregroundStyle(.foregroundPrimary)
+                        .cornerRadius(8)
                 }
             })
         }
@@ -121,7 +135,7 @@ extension SchnapsGameView {
             container.mainContext.insert(round)
             game.rounds.append(SBGameRoundLink(index: game.rounds.count, round: round))
             
-            let round2 = SBGameRound(voter: game.players[1], voterWon: true, gameType: .normal, kontra: .re, cheater: game.players[0])
+            let round2 = SBGameRound(voter: game.players[1], voterWon: true, gameType: .normal, kontra: .normal, cheater: game.players[0])
             container.mainContext.insert(round2)
             game.rounds.append(SBGameRoundLink(index: game.rounds.count, round: round2))
             return container

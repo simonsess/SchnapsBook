@@ -14,9 +14,16 @@ struct SchnapsGamesView: View {
                 ForEach(games) { game in
                     HStack {
                         Text("\(game.name)")
+                            .foregroundStyle(Color.foregroundSecondary)
+                            .foregroundStyle(.primary)
+                            .fontWeight(.semibold)
                         Spacer()
                         Text(game.date, format: Date.FormatStyle(date: .numeric, time: .omitted))
+                            .foregroundStyle(Color.foregroundTertiary)
+                            .foregroundStyle(.secondary)
+                            .fontWeight(.bold)
                     }
+                    .listRowBackground(Color.backgroundSecondary)
                     .onTapGesture {
                         navigationPath.append(game)
                     }
@@ -24,6 +31,8 @@ struct SchnapsGamesView: View {
                 .onDelete(perform: deleteGame)
                 //TODO: confirm delete
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.backgroundPrimary)
             .navigationDestination(for: SBGame.self) { game in
                 SchnapsGameView(gameId: game.id, context: modelContext)
                     .toolbar(.hidden, for: .tabBar)

@@ -19,8 +19,11 @@ struct PlayersView: View {
                     }
                 }
                 .onDelete(perform: deletePlayer)
-                //TODO: confirm delete
+                .foregroundStyle(Color.foregroundSecondary)
+                .listRowBackground(Color.backgroundSecondary)
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.backgroundPrimary)
             .toolbar {
                 ToolbarItem {
                     Button(action: {
@@ -40,6 +43,7 @@ struct PlayersView: View {
     }
     
     private func deletePlayer(offsets: IndexSet) {
+        //TODO: confirm delete
         withAnimation {
             for index in offsets {
                 players[index].isDeleted = true

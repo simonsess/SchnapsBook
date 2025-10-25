@@ -24,12 +24,21 @@
 		1072E9EF2D5104AF000F7B20 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9EE2D5104AF000F7B20 /* PlayerDetail.swift */; };
 		1072E9F12D510A97000F7B20 /* NewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9F02D510A97000F7B20 /* NewPlayerView.swift */; };
 		1072E9F32D512FDE000F7B20 /* GameCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9F22D512FDE000F7B20 /* GameCreationView.swift */; };
+		107940C72EAA5D84000A9918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107940C62EAA5D84000A9918 /* LaunchScreen.storyboard */; };
+		107940CA2EAA75C7000A9918 /* FormTextLabelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107940C92EAA75C7000A9918 /* FormTextLabelRow.swift */; };
+		107940CC2EAA7DCE000A9918 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107940CB2EAA7DCE000A9918 /* Colors.xcassets */; };
+		107940CE2EAA8DB8000A9918 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107940CD2EAA8DB4000A9918 /* ColorExtension.swift */; };
+		107940D02EAA98D7000A9918 /* NavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107940CF2EAA98CA000A9918 /* NavigationBarExtension.swift */; };
 		10D862F92D3BD5A1000C66E6 /* SchnapsBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */; };
 		10D862FF2D3BD5A3000C66E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */; };
 		10D863022D3BD5A3000C66E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D863012D3BD5A3000C66E6 /* Preview Assets.xcassets */; };
 		10D8630B2D3BD607000C66E6 /* SchnapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D8630A2D3BD607000C66E6 /* SchnapsViewModel.swift */; };
 		10D8630F2D3BD8A2000C66E6 /* SchnapsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D8630E2D3BD8A2000C66E6 /* SchnapsMainView.swift */; };
 		10D863112D3BD8B0000C66E6 /* SchnapsGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D863102D3BD8B0000C66E6 /* SchnapsGameView.swift */; };
+		10E47A4A2EAD05CF000862A5 /* DisabledStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A492EAD05B8000862A5 /* DisabledStylingModifier.swift */; };
+		10E47A4C2EAD4BC1000862A5 /* FormStyleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A4B2EAD4BB6000862A5 /* FormStyleModifier.swift */; };
+		10E47A4E2EAD4C5C000862A5 /* ButtonStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A4D2EAD4C4A000862A5 /* ButtonStylingModifier.swift */; };
+		10E47A502EAD4DD7000862A5 /* SBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A4F2EAD4DD7000862A5 /* SBButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +59,11 @@
 		1072E9EE2D5104AF000F7B20 /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		1072E9F02D510A97000F7B20 /* NewPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayerView.swift; sourceTree = "<group>"; };
 		1072E9F22D512FDE000F7B20 /* GameCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCreationView.swift; sourceTree = "<group>"; };
+		107940C62EAA5D84000A9918 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		107940C92EAA75C7000A9918 /* FormTextLabelRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextLabelRow.swift; sourceTree = "<group>"; };
+		107940CB2EAA7DCE000A9918 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		107940CD2EAA8DB4000A9918 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		107940CF2EAA98CA000A9918 /* NavigationBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtension.swift; sourceTree = "<group>"; };
 		10D862F52D3BD5A1000C66E6 /* SchnapsBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchnapsBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsBookApp.swift; sourceTree = "<group>"; };
 		10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +71,10 @@
 		10D8630A2D3BD607000C66E6 /* SchnapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsViewModel.swift; sourceTree = "<group>"; };
 		10D8630E2D3BD8A2000C66E6 /* SchnapsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsMainView.swift; sourceTree = "<group>"; };
 		10D863102D3BD8B0000C66E6 /* SchnapsGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsGameView.swift; sourceTree = "<group>"; };
+		10E47A492EAD05B8000862A5 /* DisabledStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledStylingModifier.swift; sourceTree = "<group>"; };
+		10E47A4B2EAD4BB6000862A5 /* FormStyleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStyleModifier.swift; sourceTree = "<group>"; };
+		10E47A4D2EAD4C4A000862A5 /* ButtonStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStylingModifier.swift; sourceTree = "<group>"; };
+		10E47A4F2EAD4DD7000862A5 /* SBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +91,11 @@
 		1070ED5D2E9ED85900E1D151 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				10E47A482EAD05A0000862A5 /* Modifiers */,
+				107940CF2EAA98CA000A9918 /* NavigationBarExtension.swift */,
+				107940C82EAA75A7000A9918 /* Components */,
 				1070ED682EA8EADB00E1D151 /* TextExtension.swift */,
+				107940CD2EAA8DB4000A9918 /* ColorExtension.swift */,
 				1070ED662EA8E9E200E1D151 /* ViewExtension.swift */,
 				1070ED642EA29BF100E1D151 /* UUIDExtension.swift */,
 				1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */,
@@ -114,6 +136,15 @@
 			path = Games;
 			sourceTree = "<group>";
 		};
+		107940C82EAA75A7000A9918 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				107940C92EAA75C7000A9918 /* FormTextLabelRow.swift */,
+				10E47A4F2EAD4DD7000862A5 /* SBButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		10D862EC2D3BD5A1000C66E6 = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +171,9 @@
 				1072E9EB2D50FDE5000F7B20 /* Games */,
 				1072E9E82D50FCFF000F7B20 /* Players */,
 				10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */,
+				107940CB2EAA7DCE000A9918 /* Colors.xcassets */,
 				10D863002D3BD5A3000C66E6 /* Preview Content */,
+				107940C62EAA5D84000A9918 /* LaunchScreen.storyboard */,
 			);
 			path = SchnapsBook;
 			sourceTree = "<group>";
@@ -170,6 +203,16 @@
 				1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		10E47A482EAD05A0000862A5 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				10E47A4D2EAD4C4A000862A5 /* ButtonStylingModifier.swift */,
+				10E47A4B2EAD4BB6000862A5 /* FormStyleModifier.swift */,
+				10E47A492EAD05B8000862A5 /* DisabledStylingModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +273,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				107940C72EAA5D84000A9918 /* LaunchScreen.storyboard in Resources */,
+				107940CC2EAA7DCE000A9918 /* Colors.xcassets in Resources */,
 				10D863022D3BD5A3000C66E6 /* Preview Assets.xcassets in Resources */,
 				10D862FF2D3BD5A3000C66E6 /* Assets.xcassets in Resources */,
 			);
@@ -243,26 +288,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				1072E9C72D4FDE73000F7B20 /* SBGameType.swift in Sources */,
+				107940D02EAA98D7000A9918 /* NavigationBarExtension.swift in Sources */,
 				1072E9C32D4FDE01000F7B20 /* SBPlayer.swift in Sources */,
+				107940CE2EAA8DB8000A9918 /* ColorExtension.swift in Sources */,
 				1072E9F32D512FDE000F7B20 /* GameCreationView.swift in Sources */,
 				1072E9ED2D50FE56000F7B20 /* SchnapsGamesView.swift in Sources */,
 				10D862F92D3BD5A1000C66E6 /* SchnapsBookApp.swift in Sources */,
 				1070ED632EA10AF900E1D151 /* SchnapsGameViewModel.swift in Sources */,
+				10E47A4A2EAD05CF000862A5 /* DisabledStylingModifier.swift in Sources */,
 				10D8630B2D3BD607000C66E6 /* SchnapsViewModel.swift in Sources */,
 				10D863112D3BD8B0000C66E6 /* SchnapsGameView.swift in Sources */,
 				1070ED5F2E9ED86700E1D151 /* BoolExtension.swift in Sources */,
 				1072E9EF2D5104AF000F7B20 /* PlayerDetail.swift in Sources */,
+				10E47A502EAD4DD7000862A5 /* SBButton.swift in Sources */,
 				1070ED692EA8EAE100E1D151 /* TextExtension.swift in Sources */,
 				1070ED612E9FDAD600E1D151 /* DictionaryExtension.swift in Sources */,
 				1070ED652EA29BFB00E1D151 /* UUIDExtension.swift in Sources */,
 				1072E9EA2D50FD10000F7B20 /* PlayersView.swift in Sources */,
 				1070ED5C2E9EBD6E00E1D151 /* SBRoundEntryView.swift in Sources */,
 				1070ED672EA8E9E800E1D151 /* ViewExtension.swift in Sources */,
+				10E47A4C2EAD4BC1000862A5 /* FormStyleModifier.swift in Sources */,
+				107940CA2EAA75C7000A9918 /* FormTextLabelRow.swift in Sources */,
 				1072E9C92D4FE23F000F7B20 /* SBGame.swift in Sources */,
 				1072E9C52D4FDE64000F7B20 /* SBGameRound.swift in Sources */,
 				1072E9CB2D4FE39C000F7B20 /* SBSchnapsBook.swift in Sources */,
 				1072E9F12D510A97000F7B20 /* NewPlayerView.swift in Sources */,
 				10D8630F2D3BD8A2000C66E6 /* SchnapsMainView.swift in Sources */,
+				10E47A4E2EAD4C5C000862A5 /* ButtonStylingModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +445,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SchnapsBook/Preview Content\"";
@@ -404,7 +457,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -423,6 +476,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SchnapsBook/Preview Content\"";
@@ -434,7 +488,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

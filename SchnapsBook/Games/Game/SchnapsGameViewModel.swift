@@ -95,12 +95,12 @@ class SchnapsGameViewModel: ObservableObject {
     public func cellBackground(in round: SBGameRound?, for playerRank: Int) -> Color {
         let player = sortedPlayers[playerRank]
         guard let round else {
-            return .yellow
+            return .clear
         }
         guard round.cheater == nil else {
-            return round.cheater == player ? .red : .clear
+            return round.cheater == player ? .backgroundError : .clear
         }
-        return isPlayerInWinningTeam(round: round, playerRank: playerRank) ? Color.mint : Color.clear
+        return isPlayerInWinningTeam(round: round, playerRank: playerRank) ? .backgroundWarning : .clear
     }
     
     public func addRound(round: SBGameRound) {

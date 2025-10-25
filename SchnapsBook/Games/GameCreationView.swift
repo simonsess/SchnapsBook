@@ -18,33 +18,31 @@ struct GameCreationView: View {
         NavigationView {
             VStack {
                 Form {
-                    Section(header: Text("Name")) {
+                    Section(content: {
                         TextField("Enter session name", text: $gameName)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                    }
-                    Section(header: Text("Select 4 Players")) {
+                            .backgroundStyle(Color.backgroundSecondary)
+                            .foregroundStyle(Color.foregroundPrimary)
+                    }, header: {
+                        Text("Name")
+                            .foregroundStyle(.foregroundSecondary)
+                    })
+                    .listRowBackground(Color.backgroundSecondary)
+                    Section(content: {
                         pLayerList()
-                    }
+                    }, header: {
+                        Text("Select 4 Players")
+                            .foregroundStyle(.foregroundSecondary)
+                    })
+                    .listRowBackground(Color.backgroundSecondary)
                 }
-                Spacer()
-                Button(action: createGame) {
-                    Text("Create")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(!canCreate ? Color.gray : Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .disabled(!canCreate)
-                .padding()
-                Button("Dismiss") {
-                    dismiss()
-                }
-                .buttonStyle(.borderless)
-                .foregroundColor(.red)
-                .padding()
+                .formStyling()
+                SBPrimaryButton(action: createGame, title: "Create")
+                    .disabledStyling(isDisabled: !canCreate)
+                
+                SBSecondaryButton(action: { dismiss() }, title: "Dismiss")
             }
             .navigationTitle("New Game")
+            .background(Color.backgroundPrimary)
         }
     }
     @ViewBuilder

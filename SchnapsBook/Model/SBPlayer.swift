@@ -33,11 +33,11 @@ extension SBPlayer {
 }
 
 extension SBPlayer {
-    static func mock(postFix: String = "", modelContext: ModelContext) -> SBPlayer {
+    static func mock(id: UUID = UUID(), postFix: String = "", modelContext: ModelContext) -> SBPlayer {
         let firstName: [String] = ["John", "Jack", "Steve", "Freddie"]
         let lastName: [String] = ["Doe", "Williwms", "Black", "Swift"]
         
         let name = "\(firstName[Int.random(in: 0...3)]) \(lastName[Int.random(in: 0...3)]) \(postFix)"
-        return SBPlayer(id: UUID(), name: name, lastPlayed: Date() - 4, score: 0)
+        return SBPlayer(id: id, name: name, lastPlayed: Date() - 4, score: 0)
     }
 }

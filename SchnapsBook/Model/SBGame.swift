@@ -63,7 +63,7 @@ extension SBGame {
     }
     
     static func mockGame(modelContext: ModelContext) -> SBGame {
-        let voter = SBPlayer.mock(postFix: "ff##", modelContext: modelContext)
+        let voter = SBPlayer.mock(id: UUID.zero, modelContext: modelContext)
         let players = [SBPlayer.mock(postFix: "11@1", modelContext: modelContext), voter, SBPlayer.mock(modelContext: modelContext), SBPlayer.mock(modelContext: modelContext)]
         let order: [Int: UUID] = Dictionary(uniqueKeysWithValues: players.enumerated().map { ($0, $1.id) })
         return SBGame(name: randomName(), date: randomDate2024(), players: players, playerToVote: voter, rounds: [], playerOrder: order)

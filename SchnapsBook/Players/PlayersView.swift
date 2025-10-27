@@ -12,6 +12,7 @@ struct PlayersView: View {
                 ForEach(players) { player in
                     NavigationLink {
                         PlayerDetail(player: player)
+                            .toolbar(.hidden, for: .tabBar)
                     } label: {
                         HStack {
                             Text("\(player.name)")

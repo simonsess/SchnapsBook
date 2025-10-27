@@ -18,7 +18,6 @@ struct SchnapsMainView: View {
                 }
             
             PlayersView()
-                
                 .tabItem {
                     Label("Players", systemImage: "person.3.fill")
                         .foregroundStyle(Color.foregroundPrimary)

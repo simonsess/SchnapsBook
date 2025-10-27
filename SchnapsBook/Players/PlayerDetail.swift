@@ -2,7 +2,6 @@ import SwiftUI
 import SwiftData
 
 struct PlayerDetail: View {
-    
     @Bindable var player: SBPlayer
     @State var playerName: String = ""
     @State var canSave: Bool = false

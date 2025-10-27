@@ -34,12 +34,12 @@ struct SchnapsGamesView: View {
             .scrollContentBackground(.hidden)
             .background(Color.backgroundPrimary)
             .navigationDestination(for: SBGame.self) { game in
-                SchnapsGameView(gameId: game.id, context: modelContext)
+                SchnapsGameView(viewModel: SchnapsGameViewModel(game: game))
                     .toolbar(.hidden, for: .tabBar)
             }
             .navigationDestination(for: SBGame?.self) { game in
                 if let game {
-                    SchnapsGameView(gameId: game.id, context: modelContext)
+                    SchnapsGameView(viewModel: SchnapsGameViewModel(game: game))
                         .toolbar(.hidden, for: .tabBar)
                 }
             }

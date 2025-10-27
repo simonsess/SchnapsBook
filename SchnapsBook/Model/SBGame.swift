@@ -12,7 +12,7 @@ final class SBGame: ObservableObject {
     var rounds: [SBGameRound] = []
     var playerOrder: [Int: UUID]
     
-    private var voterIndex = 0
+    private var voterIndex = 0 //DELETE
     
     init(name: String, date: Date, players: [SBPlayer], playerToVote: SBPlayer, playerOrder: [Int : UUID]) {
         self.id = UUID()
@@ -21,6 +21,12 @@ final class SBGame: ObservableObject {
         self.players = players
         self.playerToVote = playerToVote
         self.playerOrder = playerOrder
+    }
+}
+
+extension SBGame {
+    var sortedPlayers: [SBPlayer] {
+        players.sorted(byOrder: playerOrder)
     }
 }
 

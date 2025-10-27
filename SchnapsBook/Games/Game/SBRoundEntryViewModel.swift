@@ -12,7 +12,7 @@ import SwiftUI
     
     var roundNumber: Int {
         guard let round else {
-            return game.rounds.count
+            return game.rounds.count + 1
         }
         return round.order + 1
     }
@@ -111,6 +111,6 @@ import SwiftUI
         round.voterWon = voterWon
         round.gameType = gameType
         round.kontra = kontra
-        round.cheater = cheaterPlayer
+        round.cheater = cheaterSwitch ? cheaterPlayer : nil
     }
 }

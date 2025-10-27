@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct SchnapsGameView: View {
+    @State var roundToPopup: SBGameRound? = nil
     @State var voterIndex: Int?
     @State private var roundSheet: Bool = false
     @StateObject private var viewModel: SchnapsGameViewModel
@@ -12,22 +13,39 @@ struct SchnapsGameView: View {
     }
     
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 0, pinnedViews: [.sectionHeaders]) {
-                Section(content: {
-                    ForEach(viewModel.scoreRounds.keys.sorted(), id: \.self) { roundNo in
-                        rowView(roundNo: roundNo)
-                    }
-                }, header: {
-                    headerView()
-                        .padding(.bottom, 5)
+        ZStack {
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 0, pinnedViews: [.sectionHeaders]) {
+                    Section(content: {
+                        ForEach(viewModel.scoreRounds.keys.sorted(), id: \.self) { roundNo in
+                            rowView(roundNo: roundNo)
+                                .onTapGesture {
+                                    showRoundDetail(round: viewModel.round(index: roundNo))
+                                }
+                        }
+                    }, header: {
+                        headerView()
+                            .padding(.bottom, 5)
+                    })
+                }
+                .padding(.horizontal, 2)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .scrollBounceBehavior(.basedOnSize)
+            .background(.backgroundPrimary)
+            
+            if let roundToPopup {
+                SBPopupCard(content: {
+                    RoundDetailPopup(round: roundToPopup, dismiss: {
+                        self.roundToPopup = nil
+                    }, edit: {
+                        
+                    })
+                }, dismiss: {
+                    self.roundToPopup = nil
                 })
             }
-            .padding(.horizontal, 2)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .scrollBounceBehavior(.basedOnSize)
-        .background(.backgroundPrimary)
         .toolbar{
             ToolbarItem(placement: .primaryAction, content: {
                 Button(action: {
@@ -51,7 +69,9 @@ struct SchnapsGameView: View {
             
         }
         .sheet(isPresented: $roundSheet, content: {
-            SBRoundEntryView(viewModel: viewModel, voter: viewModel.newRoundVoter, roundNumber: viewModel.newRoundNumber)
+            if let newRoundNumber = viewModel.newRoundNumber {
+                SBRoundEntryView(viewModel: viewModel, voter: viewModel.newRoundVoter, roundNumber: newRoundNumber)
+            }
         })
         .onAppear() {
             Task {
@@ -99,22 +119,32 @@ struct SchnapsGameView: View {
                     .foregroundStyle(.foregroundPrimary)
             }
             let scores = viewModel.scoreRounds[roundNo]
-            let round = viewModel.rounds[roundNo]
-            ForEach(0..<4, content: { i in
-                let player = viewModel.sortedPlayers[i]
-                if let scores, let score = scores[player.id] {
-                    Text("\(score)")
-                        .cellFontStyle(viewModel.isPLayerVoter(round: round, playerRank: i))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(viewModel.cellBackground(in: round, for: i))
-                        .minimumScaleFactor(0.5)
-                        .padding(.vertical, 1)
-                        .foregroundStyle(.foregroundPrimary)
-                        .cornerRadius(8)
-                }
-            })
+            if let round = viewModel.round(index: roundNo) {
+                ForEach(0..<4, content: { i in
+                    let player = viewModel.sortedPlayers[i]
+                    if let scores, let score = scores[player.id] {
+                        Text("\(score)")
+                            .cellFontStyle(viewModel.isPLayerVoter(round: round, playerRank: i))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(viewModel.cellBackground(in: round, for: i))
+                            .minimumScaleFactor(0.5)
+                            .padding(.vertical, 1)
+                            .foregroundStyle(.foregroundPrimary)
+                            .cornerRadius(8)
+                    }
+                })
+            }
         }
         .frame(height: 30)
+    }
+    
+    func showRoundDetail(round: SBGameRound?) {
+        guard let round else {
+            return
+        }
+        withAnimation(.spring()) {
+            roundToPopup = round
+        }
     }
 }
 
@@ -131,13 +161,13 @@ extension SchnapsGameView {
         if let container = try? ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true)) {
             let game = SBGame.mockGame(modelContext: container.mainContext)
             container.mainContext.insert(game)
-            let round = SBGameRound(voter: game.players[0], voterWon: true, gameType: .normal)
+            let round = SBGameRound(voter: game.players[0], voterWon: true, gameType: .normal, order: 1)
             container.mainContext.insert(round)
-            game.rounds.append(SBGameRoundLink(index: game.rounds.count, round: round))
+            game.rounds.append(round)
             
-            let round2 = SBGameRound(voter: game.players[1], voterWon: true, gameType: .normal, kontra: .normal, cheater: game.players[0])
+            let round2 = SBGameRound(voter: game.players[1], voterWon: true, gameType: .normal, kontra: .normal, cheater: game.players[0], order: 2)
             container.mainContext.insert(round2)
-            game.rounds.append(SBGameRoundLink(index: game.rounds.count, round: round2))
+            game.rounds.append(round2)
             return container
         }
         return try! ModelContainer(for: SBGame.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))

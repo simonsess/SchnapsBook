@@ -33,7 +33,7 @@ enum SBGameType: CaseIterable, Codable, Hashable, Identifiable {
         case .noWater:
             "no water"
         case .normal:
-            "normal game"
+            "normal"
         case .noTrick:
             "No trick - not called"
         case .twelve:

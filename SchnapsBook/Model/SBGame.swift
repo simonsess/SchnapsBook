@@ -2,35 +2,24 @@ import Foundation
 import SwiftData
 
 @Model
-final class SBGameRoundLink: ObservableObject {
-    var index: Int
-    var round: SBGameRound
-    
-    init(index: Int, round: SBGameRound) {
-        self.index = index
-        self.round = round
-    }
-}
-
-@Model
 final class SBGame: ObservableObject {
     var id: UUID
     var name: String
     var date: Date
     var players: [SBPlayer]
     var playerToVote: SBPlayer
-    var rounds: [SBGameRoundLink]
+    @Relationship(deleteRule: .cascade)
+    var rounds: [SBGameRound] = []
     var playerOrder: [Int: UUID]
     
     private var voterIndex = 0
     
-    init(name: String, date: Date, players: [SBPlayer], playerToVote: SBPlayer, rounds: [SBGameRoundLink], playerOrder: [Int : UUID]) {
+    init(name: String, date: Date, players: [SBPlayer], playerToVote: SBPlayer, playerOrder: [Int : UUID]) {
         self.id = UUID()
         self.name = name
         self.date = date
         self.players = players
         self.playerToVote = playerToVote
-        self.rounds = rounds
         self.playerOrder = playerOrder
     }
 }
@@ -66,7 +55,7 @@ extension SBGame {
         let voter = SBPlayer.mock(id: UUID.zero, modelContext: modelContext)
         let players = [SBPlayer.mock(postFix: "11@1", modelContext: modelContext), voter, SBPlayer.mock(modelContext: modelContext), SBPlayer.mock(modelContext: modelContext)]
         let order: [Int: UUID] = Dictionary(uniqueKeysWithValues: players.enumerated().map { ($0, $1.id) })
-        return SBGame(name: randomName(), date: randomDate2024(), players: players, playerToVote: voter, rounds: [], playerOrder: order)
+        return SBGame(name: randomName(), date: randomDate2024(), players: players, playerToVote: voter, playerOrder: order)
     }
     static func mockGames(modelContext: ModelContext) -> [SBGame] {
         [

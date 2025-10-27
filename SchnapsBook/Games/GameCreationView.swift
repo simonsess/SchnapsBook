@@ -93,7 +93,7 @@ struct GameCreationView: View {
             return
         }
         let selected = players.filter({selectedPlayers.contains(value: $0.id)})
-        let newGame = SBGame(name: gameName, date: Date(), players: selected, playerToVote: voter, rounds: [], playerOrder: selectedPlayers)
+        let newGame = SBGame(name: gameName, date: Date(), players: selected, playerToVote: voter, playerOrder: selectedPlayers)
         modelContext.insert(newGame)
         try? modelContext.save()
         createdGame = newGame

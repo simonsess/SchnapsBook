@@ -19,7 +19,6 @@ class SchnapsGameViewModel: ObservableObject {
     private var playerScore: [UUID: Int] = [:]
     private var playerOrder: [Int: UUID] = [:]
     private let gameId: UUID
-    public var rounds: [Int: SBGameRound] = [:]
     public var game: SBGame?
     
     @Published var gameName: String = ""
@@ -63,8 +62,8 @@ class SchnapsGameViewModel: ObservableObject {
         return game?.players.first(where: { $0.id == id })
     }
     
-    var newRoundNumber: Int {
-        rounds.count
+    var newRoundNumber: Int? {
+        game?.rounds.count
     }
     
 
@@ -88,6 +87,10 @@ class SchnapsGameViewModel: ObservableObject {
         return player == round.voter || player == round.coop
     }
     
+    public func round(index: Int) -> SBGameRound? {
+        game?.rounds.first(where: { $0.order == index })
+    }
+    
     public func isPlayerInWinningTeam(round: SBGameRound?, playerRank: Int) -> Bool {
         isPlayerVoterTeam(round: round, playerRank: playerRank) ^ (round?.voterWon ?? false)
     }
@@ -107,16 +110,18 @@ class SchnapsGameViewModel: ObservableObject {
         guard let game else {
             return
         }
-        game.rounds.append(SBGameRoundLink(index: game.rounds.count, round: round))
-        rounds.appendLast(round)
+        game.rounds.append(round)
         processNewRound(round: round)
         try? context.save()
     }
     
     public func processRounds() {
-        rounds.forEach({ round in
-            processNewRound(round: round.value)
-        })
+        for i in 0..<(game?.rounds.count ?? 0) {
+            guard let round = game?.rounds.sorted(by: { $0.order < $1.order })[i] else {
+                continue
+            }
+            processNewRound(round: round)
+        }
     }
     
     private func processNewRound(round: SBGameRound) {
@@ -169,15 +174,10 @@ class SchnapsGameViewModel: ObservableObject {
             playerScore[$0.id] = 0
         })
         playerOrder = game.playerOrder
-        var roundDict: [Int: SBGameRound] = [:]
-        for round in game.rounds {
-            roundDict[Int(round.index)] = round.round
-        }
-        rounds = roundDict
         self.game = game
-        
         gameName = game.name
         
         processRounds()
     }
 }
+

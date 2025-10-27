@@ -9,13 +9,18 @@ class SBGameRound {
     var gameType: SBGameType
     var kontra: SBKontra
     var cheater: SBPlayer?
+    var order: Int
     
-    init(voter: SBPlayer, coop: SBPlayer? = nil, voterWon: Bool, gameType: SBGameType, kontra: SBKontra = .normal, cheater: SBPlayer? = nil) {
+    @Relationship(inverse: \SBGame.rounds)
+    var game: SBGame?
+    
+    init(voter: SBPlayer, coop: SBPlayer? = nil, voterWon: Bool, gameType: SBGameType, kontra: SBKontra = .normal, cheater: SBPlayer? = nil, order: Int) {
         self.voter = voter
         self.coop = coop
         self.voterWon = voterWon
         self.gameType = gameType
         self.kontra = kontra
         self.cheater = cheater
+        self.order = order
     }
 }

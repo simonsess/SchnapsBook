@@ -39,6 +39,9 @@
 		10E47A4C2EAD4BC1000862A5 /* FormStyleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A4B2EAD4BB6000862A5 /* FormStyleModifier.swift */; };
 		10E47A4E2EAD4C5C000862A5 /* ButtonStylingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A4D2EAD4C4A000862A5 /* ButtonStylingModifier.swift */; };
 		10E47A502EAD4DD7000862A5 /* SBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A4F2EAD4DD7000862A5 /* SBButton.swift */; };
+		10E47A532EAEC915000862A5 /* RoundDetailPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A522EAEC915000862A5 /* RoundDetailPopup.swift */; };
+		10E47A552EAECB1E000862A5 /* SBPopupCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A542EAECB1E000862A5 /* SBPopupCard.swift */; };
+		10E47A572EAFB29E000862A5 /* SBSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E47A562EAFB29E000862A5 /* SBSeparator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +78,9 @@
 		10E47A4B2EAD4BB6000862A5 /* FormStyleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStyleModifier.swift; sourceTree = "<group>"; };
 		10E47A4D2EAD4C4A000862A5 /* ButtonStylingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStylingModifier.swift; sourceTree = "<group>"; };
 		10E47A4F2EAD4DD7000862A5 /* SBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBButton.swift; sourceTree = "<group>"; };
+		10E47A522EAEC915000862A5 /* RoundDetailPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundDetailPopup.swift; sourceTree = "<group>"; };
+		10E47A542EAECB1E000862A5 /* SBPopupCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBPopupCard.swift; sourceTree = "<group>"; };
+		10E47A562EAFB29E000862A5 /* SBSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBSeparator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,8 @@
 			children = (
 				107940C92EAA75C7000A9918 /* FormTextLabelRow.swift */,
 				10E47A4F2EAD4DD7000862A5 /* SBButton.swift */,
+				10E47A542EAECB1E000862A5 /* SBPopupCard.swift */,
+				10E47A562EAFB29E000862A5 /* SBSeparator.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 		10D8630D2D3BD656000C66E6 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				10E47A512EAEC8E7000862A5 /* RoundPopup */,
 				1070ED622EA10AF200E1D151 /* SchnapsGameViewModel.swift */,
 				10D863102D3BD8B0000C66E6 /* SchnapsGameView.swift */,
 				1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */,
@@ -213,6 +222,14 @@
 				10E47A492EAD05B8000862A5 /* DisabledStylingModifier.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		10E47A512EAEC8E7000862A5 /* RoundPopup */ = {
+			isa = PBXGroup;
+			children = (
+				10E47A522EAEC915000862A5 /* RoundDetailPopup.swift */,
+			);
+			path = RoundPopup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +311,7 @@
 				1072E9F32D512FDE000F7B20 /* GameCreationView.swift in Sources */,
 				1072E9ED2D50FE56000F7B20 /* SchnapsGamesView.swift in Sources */,
 				10D862F92D3BD5A1000C66E6 /* SchnapsBookApp.swift in Sources */,
+				10E47A552EAECB1E000862A5 /* SBPopupCard.swift in Sources */,
 				1070ED632EA10AF900E1D151 /* SchnapsGameViewModel.swift in Sources */,
 				10E47A4A2EAD05CF000862A5 /* DisabledStylingModifier.swift in Sources */,
 				10D8630B2D3BD607000C66E6 /* SchnapsViewModel.swift in Sources */,
@@ -308,11 +326,13 @@
 				1070ED5C2E9EBD6E00E1D151 /* SBRoundEntryView.swift in Sources */,
 				1070ED672EA8E9E800E1D151 /* ViewExtension.swift in Sources */,
 				10E47A4C2EAD4BC1000862A5 /* FormStyleModifier.swift in Sources */,
+				10E47A532EAEC915000862A5 /* RoundDetailPopup.swift in Sources */,
 				107940CA2EAA75C7000A9918 /* FormTextLabelRow.swift in Sources */,
 				1072E9C92D4FE23F000F7B20 /* SBGame.swift in Sources */,
 				1072E9C52D4FDE64000F7B20 /* SBGameRound.swift in Sources */,
 				1072E9CB2D4FE39C000F7B20 /* SBSchnapsBook.swift in Sources */,
 				1072E9F12D510A97000F7B20 /* NewPlayerView.swift in Sources */,
+				10E47A572EAFB29E000862A5 /* SBSeparator.swift in Sources */,
 				10D8630F2D3BD8A2000C66E6 /* SchnapsMainView.swift in Sources */,
 				10E47A4E2EAD4C5C000862A5 /* ButtonStylingModifier.swift in Sources */,
 			);

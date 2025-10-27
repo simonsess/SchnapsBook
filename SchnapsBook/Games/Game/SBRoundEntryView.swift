@@ -15,24 +15,10 @@ struct SBRoundEntryView: View {
     @State private var water: Bool = false
     @State private var kontra: SBKontra = .normal
     
-    var round: SBGameRound? = nil
-    var isEditing: Bool {
-        round != nil
-    }
-    
-    init(viewModel: SchnapsGameViewModel, voter: String, roundNumber: Int, voterWon: Bool, gameType: SBGameType, cheaterSwitch: Bool, cheater: UUID, teammate: Teammate, water: Bool, kontra: SBKontra, round: SBGameRound? = nil) {
-        self.viewModel = viewModel
-        self.voter = voter
-        self.roundNumber = roundNumber
-        self.voterWon = voterWon
-        self.gameType = gameType
-        self.cheaterSwitch = cheaterSwitch
-        self.cheater = cheater
-        self.teammate = teammate
-        self.water = water
-        self.kontra = kontra
-        self.round = round
-    }
+//    var round: SBGameRound? = nil
+//    var isEditing: Bool {
+//        round != nil
+//    }
     
     var body: some View {
         ZStack {

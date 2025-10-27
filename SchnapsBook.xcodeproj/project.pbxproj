@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		103D89B82EAFC4A0008719C8 /* SBRoundEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D89B72EAFC490008719C8 /* SBRoundEntryViewModel.swift */; };
+		103D89BB2EB01603008719C8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D89BA2EB01603008719C8 /* SettingsView.swift */; };
 		1070ED5C2E9EBD6E00E1D151 /* SBRoundEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */; };
 		1070ED5F2E9ED86700E1D151 /* BoolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED5E2E9ED86100E1D151 /* BoolExtension.swift */; };
 		1070ED612E9FDAD600E1D151 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		103D89B72EAFC490008719C8 /* SBRoundEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBRoundEntryViewModel.swift; sourceTree = "<group>"; };
+		103D89BA2EB01603008719C8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBRoundEntryView.swift; sourceTree = "<group>"; };
 		1070ED5E2E9ED86100E1D151 /* BoolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolExtension.swift; sourceTree = "<group>"; };
 		1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		103D89B92EB015DB008719C8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				103D89BA2EB01603008719C8 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		1070ED5D2E9ED85900E1D151 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +190,7 @@
 				10D8630C2D3BD63E000C66E6 /* Main */,
 				1072E9EB2D50FDE5000F7B20 /* Games */,
 				1072E9E82D50FCFF000F7B20 /* Players */,
+				103D89B92EB015DB008719C8 /* Settings */,
 				10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */,
 				107940CB2EAA7DCE000A9918 /* Colors.xcassets */,
 				10D863002D3BD5A3000C66E6 /* Preview Content */,
@@ -328,6 +339,7 @@
 				1070ED652EA29BFB00E1D151 /* UUIDExtension.swift in Sources */,
 				1072E9EA2D50FD10000F7B20 /* PlayersView.swift in Sources */,
 				1070ED5C2E9EBD6E00E1D151 /* SBRoundEntryView.swift in Sources */,
+				103D89BB2EB01603008719C8 /* SettingsView.swift in Sources */,
 				1070ED672EA8E9E800E1D151 /* ViewExtension.swift in Sources */,
 				10E47A4C2EAD4BC1000862A5 /* FormStyleModifier.swift in Sources */,
 				10E47A532EAEC915000862A5 /* RoundDetailPopup.swift in Sources */,

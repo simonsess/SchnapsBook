@@ -23,10 +23,10 @@ struct SchnapsMainView: View {
                         .foregroundStyle(Color.foregroundPrimary)
                 }
             
-//            SettingsView()
-//                .tabItem {
-//                    Label("Settings", systemImage: "gear")
-//                }
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
         }
         .tint(Color.foregroundTabTint)
     }

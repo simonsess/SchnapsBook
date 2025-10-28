@@ -47,6 +47,7 @@ struct SchnapsGamesView: View {
                 ToolbarItem {
                     Button(action: {
                         showNewGameModal = true
+                        createdGame = nil
                     }, label: {
                         Label("Add Game", systemImage: "plus")
                     })

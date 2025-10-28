@@ -12,9 +12,9 @@ import SwiftUI
     
     var roundNumber: Int {
         guard let round else {
-            return game.rounds.count + 1
+            return game.rounds.count
         }
-        return round.order + 1
+        return round.order
     }
     
     var roundVoter: String {

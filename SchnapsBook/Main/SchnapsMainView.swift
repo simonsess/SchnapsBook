@@ -29,6 +29,7 @@ struct SchnapsMainView: View {
                 }
         }
         .tint(Color.foregroundTabTint)
+        .preferredColorScheme(.light)
     }
 }
 

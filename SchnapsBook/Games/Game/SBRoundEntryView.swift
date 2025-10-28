@@ -12,7 +12,7 @@ struct SBRoundEntryView: View {
             Color.backgroundPrimary
                 .ignoresSafeArea()
             VStack {
-                Text("Round \(viewModel.roundNumber)")
+                Text("Round \(viewModel.roundNumber + 1)")
                     .font(.subheadline)
                     .foregroundStyle(Color.foregroundPrimary)
                 Text("Voter: \(viewModel.roundVoter)")

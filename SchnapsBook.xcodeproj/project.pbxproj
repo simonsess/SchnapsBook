@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		103D89B82EAFC4A0008719C8 /* SBRoundEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D89B72EAFC490008719C8 /* SBRoundEntryViewModel.swift */; };
 		103D89BB2EB01603008719C8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D89BA2EB01603008719C8 /* SettingsView.swift */; };
+		103D89BC2EB020EA008719C8 /* launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107940C62EAA5D84000A9918 /* launchscreen.storyboard */; };
 		1070ED5C2E9EBD6E00E1D151 /* SBRoundEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */; };
 		1070ED5F2E9ED86700E1D151 /* BoolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED5E2E9ED86100E1D151 /* BoolExtension.swift */; };
 		1070ED612E9FDAD600E1D151 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */; };
@@ -26,7 +27,6 @@
 		1072E9EF2D5104AF000F7B20 /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9EE2D5104AF000F7B20 /* PlayerDetail.swift */; };
 		1072E9F12D510A97000F7B20 /* NewPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9F02D510A97000F7B20 /* NewPlayerView.swift */; };
 		1072E9F32D512FDE000F7B20 /* GameCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1072E9F22D512FDE000F7B20 /* GameCreationView.swift */; };
-		107940C72EAA5D84000A9918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107940C62EAA5D84000A9918 /* LaunchScreen.storyboard */; };
 		107940CA2EAA75C7000A9918 /* FormTextLabelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107940C92EAA75C7000A9918 /* FormTextLabelRow.swift */; };
 		107940CC2EAA7DCE000A9918 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107940CB2EAA7DCE000A9918 /* Colors.xcassets */; };
 		107940CE2EAA8DB8000A9918 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107940CD2EAA8DB4000A9918 /* ColorExtension.swift */; };
@@ -49,6 +49,7 @@
 /* Begin PBXFileReference section */
 		103D89B72EAFC490008719C8 /* SBRoundEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBRoundEntryViewModel.swift; sourceTree = "<group>"; };
 		103D89BA2EB01603008719C8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		103D89BF2EB021FE008719C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBRoundEntryView.swift; sourceTree = "<group>"; };
 		1070ED5E2E9ED86100E1D151 /* BoolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolExtension.swift; sourceTree = "<group>"; };
 		1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
@@ -66,7 +67,7 @@
 		1072E9EE2D5104AF000F7B20 /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		1072E9F02D510A97000F7B20 /* NewPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayerView.swift; sourceTree = "<group>"; };
 		1072E9F22D512FDE000F7B20 /* GameCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCreationView.swift; sourceTree = "<group>"; };
-		107940C62EAA5D84000A9918 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		107940C62EAA5D84000A9918 /* launchscreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = launchscreen.storyboard; sourceTree = "<group>"; };
 		107940C92EAA75C7000A9918 /* FormTextLabelRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextLabelRow.swift; sourceTree = "<group>"; };
 		107940CB2EAA7DCE000A9918 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		107940CD2EAA8DB4000A9918 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -184,6 +185,7 @@
 		10D862F72D3BD5A1000C66E6 /* SchnapsBook */ = {
 			isa = PBXGroup;
 			children = (
+				103D89BF2EB021FE008719C8 /* Info.plist */,
 				1070ED5D2E9ED85900E1D151 /* Utils */,
 				1072E9C12D4FDDE3000F7B20 /* Model */,
 				10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */,
@@ -194,7 +196,7 @@
 				10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */,
 				107940CB2EAA7DCE000A9918 /* Colors.xcassets */,
 				10D863002D3BD5A3000C66E6 /* Preview Content */,
-				107940C62EAA5D84000A9918 /* LaunchScreen.storyboard */,
+				107940C62EAA5D84000A9918 /* launchscreen.storyboard */,
 			);
 			path = SchnapsBook;
 			sourceTree = "<group>";
@@ -304,7 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				107940C72EAA5D84000A9918 /* LaunchScreen.storyboard in Resources */,
+				103D89BC2EB020EA008719C8 /* launchscreen.storyboard in Resources */,
 				107940CC2EAA7DCE000A9918 /* Colors.xcassets in Resources */,
 				10D863022D3BD5A3000C66E6 /* Preview Assets.xcassets in Resources */,
 				10D862FF2D3BD5A3000C66E6 /* Assets.xcassets in Resources */,
@@ -488,9 +490,11 @@
 				DEVELOPMENT_TEAM = L5A5A4W2DN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SchnapsBook/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = launchscreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
@@ -519,9 +523,11 @@
 				DEVELOPMENT_TEAM = L5A5A4W2DN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SchnapsBook/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = launchscreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;

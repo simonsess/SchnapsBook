@@ -10,6 +10,8 @@
 		103D89B82EAFC4A0008719C8 /* SBRoundEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D89B72EAFC490008719C8 /* SBRoundEntryViewModel.swift */; };
 		103D89BB2EB01603008719C8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D89BA2EB01603008719C8 /* SettingsView.swift */; };
 		103D89BC2EB020EA008719C8 /* launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107940C62EAA5D84000A9918 /* launchscreen.storyboard */; };
+		103D89C22EB12B74008719C8 /* VotedCardHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D89C12EB12B74008719C8 /* VotedCardHelperView.swift */; };
+		103D89C42EB13234008719C8 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103D89C32EB13234008719C8 /* Cards.swift */; };
 		1070ED5C2E9EBD6E00E1D151 /* SBRoundEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */; };
 		1070ED5F2E9ED86700E1D151 /* BoolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED5E2E9ED86100E1D151 /* BoolExtension.swift */; };
 		1070ED612E9FDAD600E1D151 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */; };
@@ -50,6 +52,8 @@
 		103D89B72EAFC490008719C8 /* SBRoundEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBRoundEntryViewModel.swift; sourceTree = "<group>"; };
 		103D89BA2EB01603008719C8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		103D89BF2EB021FE008719C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		103D89C12EB12B74008719C8 /* VotedCardHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedCardHelperView.swift; sourceTree = "<group>"; };
+		103D89C32EB13234008719C8 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		1070ED5B2E9EBD6E00E1D151 /* SBRoundEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBRoundEntryView.swift; sourceTree = "<group>"; };
 		1070ED5E2E9ED86100E1D151 /* BoolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolExtension.swift; sourceTree = "<group>"; };
 		1070ED602E9FDACF00E1D151 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 				103D89BA2EB01603008719C8 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		103D89C02EB12B49008719C8 /* VotedCardHelper */ = {
+			isa = PBXGroup;
+			children = (
+				103D89C12EB12B74008719C8 /* VotedCardHelperView.swift */,
+				103D89C32EB13234008719C8 /* Cards.swift */,
+			);
+			path = VotedCardHelper;
 			sourceTree = "<group>";
 		};
 		1070ED5D2E9ED85900E1D151 /* Utils */ = {
@@ -221,6 +234,7 @@
 		10D8630D2D3BD656000C66E6 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				103D89C02EB12B49008719C8 /* VotedCardHelper */,
 				10E47A512EAEC8E7000862A5 /* RoundPopup */,
 				1070ED622EA10AF200E1D151 /* SchnapsGameViewModel.swift */,
 				10D863102D3BD8B0000C66E6 /* SchnapsGameView.swift */,
@@ -332,9 +346,11 @@
 				10E47A4A2EAD05CF000862A5 /* DisabledStylingModifier.swift in Sources */,
 				10D8630B2D3BD607000C66E6 /* SchnapsViewModel.swift in Sources */,
 				10D863112D3BD8B0000C66E6 /* SchnapsGameView.swift in Sources */,
+				103D89C42EB13234008719C8 /* Cards.swift in Sources */,
 				1070ED5F2E9ED86700E1D151 /* BoolExtension.swift in Sources */,
 				1072E9EF2D5104AF000F7B20 /* PlayerDetail.swift in Sources */,
 				10E47A502EAD4DD7000862A5 /* SBButton.swift in Sources */,
+				103D89C22EB12B74008719C8 /* VotedCardHelperView.swift in Sources */,
 				1070ED692EA8EAE100E1D151 /* TextExtension.swift in Sources */,
 				1070ED612E9FDAD600E1D151 /* DictionaryExtension.swift in Sources */,
 				103D89B82EAFC4A0008719C8 /* SBRoundEntryViewModel.swift in Sources */,

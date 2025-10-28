@@ -64,6 +64,7 @@ struct SchnapsGamesView: View {
             GameCreationView(createdGame: $createdGame)
                 .toolbar(.hidden, for: .tabBar)
         }
+        .tint(.foregroundTabTint)
     }
     
     private func deleteGame(offsets: IndexSet) {

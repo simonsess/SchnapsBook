@@ -2,10 +2,13 @@ import SwiftUI
 import SwiftData
 
 struct SchnapsGameView: View {
-    @State var roundToPopup: SBGameRound? = nil
+    @State var roundDetailInPopup: SBGameRound? = nil
     @State var voterIndex: Int?
-    @State private var roundSheet: Bool = false
-    @State private var editRoundSheet: Bool = false
+    @State private var showNewRoundEntrySheet: Bool = false
+    @State private var showRoundSheetEditor: Bool = false
+    
+    @State private var votedCard: Card? = nil
+    @State var showVotedCard: Bool = false
     
     @Bindable var viewModel: SchnapsGameViewModel
 
@@ -32,44 +35,69 @@ struct SchnapsGameView: View {
             .background(.backgroundPrimary)
             
             
-            if let roundToPopup {
+            if let roundDetailInPopup {
                 SBPopupCard(content: {
-                    RoundDetailPopup(round: roundToPopup, dismiss: {
+                    RoundDetailPopup(round: roundDetailInPopup, dismiss: {
                         animateActiveRound(round: nil)
                     }, edit: {
-                        self.editRoundSheet = true
+                        self.showRoundSheetEditor = true
                     })
                 }, dismiss: {
-                    animateActiveRound(round: nil)
+                    self.roundDetailInPopup = nil
+//                    animateActiveRound(round: nil)
+                })
+            }
+            
+            if showVotedCard {
+                SBPopupCard(content: {
+                    VotedCardHelperView(card: $votedCard)
+                }, dismiss: {
+                    showVotedCard = false
                 })
             }
         }
         .onAppear(){
             viewModel.processRounds()
         }
-        .toolbar{
+        .toolbar {
             ToolbarItem(placement: .primaryAction, content: {
                 Button(action: {
-                    roundSheet = true
+                    showNewRoundEntrySheet = true
                 }, label: {
                     Label("Add Item", systemImage: "plus")
                 })
+                .disabled(roundDetailInPopup != nil)
             })
+
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Button("vote card") {
+                        withAnimation(.spring()) {
+                            showVotedCard = true
+                        }
+                    }
+                    Button("Option 2") {}
+                } label: {
+                    // The default 'ellipsis' icon
+                    Label("More", systemImage: "ellipsis.circle")
+                }
+                .tint(.foregroundTabTint)
+            }
             
-            ToolbarItem(placement: .secondaryAction) {
-                Button("Reset Scores", action: {/* TODO: Implement reset logic */})
-                    .tint(.red)
-            }
-            ToolbarItem(placement: .secondaryAction) {
-                Button("Export Data", action: {/* TODO: Implement export logic */})
-            }
-            ToolbarItem(placement: .secondaryAction) {
-                Button("Settings", action: {/* TODO: Implement settings logic */})
-                    .tint(.yellow)
-            }
+//                Button("Reset Scores", action: {/* TODO: Implement reset logic */})
+//                    .disabled(roundToPopup != nil)
+//            }
+//            ToolbarItem(placement: .secondaryAction) {
+//                Button("Export Data", action: {/* TODO: Implement export logic */})
+//                    .disabled(roundToPopup != nil)
+//            }
+//            ToolbarItem(placement: .secondaryAction) {
+//                Button("Settings", action: {/* TODO: Implement settings logic */})
+//                    .disabled(roundToPopup != nil)
+//            }
             
         }
-        .sheet(isPresented: $roundSheet, content: {
+        .sheet(isPresented: $showNewRoundEntrySheet, content: {
             SBRoundEntryView(viewModel: SBRoundEntryViewModel(roundToEdit: nil, game: viewModel.game), completion: { round in
                 guard let round else {
                     return
@@ -77,10 +105,10 @@ struct SchnapsGameView: View {
                 viewModel.addRound(round: round)
             })
         })
-        .sheet(isPresented: $editRoundSheet, onDismiss: {
-            roundToPopup = nil
+        .sheet(isPresented: $showRoundSheetEditor, onDismiss: {
+            roundDetailInPopup = nil
         }, content: {
-            SBRoundEntryView(viewModel: SBRoundEntryViewModel(roundToEdit: roundToPopup, game: viewModel.game), completion: { _ in
+            SBRoundEntryView(viewModel: SBRoundEntryViewModel(roundToEdit: roundDetailInPopup, game: viewModel.game), completion: { _ in
                 animateActiveRound(round: nil)
                 viewModel.processRounds()
             })
@@ -154,7 +182,7 @@ struct SchnapsGameView: View {
     
     func animateActiveRound(round: SBGameRound?) {
         withAnimation(.spring()) {
-            roundToPopup = round
+            roundDetailInPopup = round
         }
     }
 }
@@ -172,11 +200,11 @@ extension SchnapsGameView {
         if let container = try? ModelContainer(for: schema, configurations: ModelConfiguration(isStoredInMemoryOnly: true)) {
             let game = SBGame.mockGame(modelContext: container.mainContext)
             container.mainContext.insert(game)
-            let round = SBGameRound(voter: game.players[0], voterWon: true, gameType: .normal, order: 1)
+            let round = SBGameRound(voter: game.players[0], voterWon: true, gameType: .normal, order: 0)
             container.mainContext.insert(round)
             game.rounds.append(round)
             
-            let round2 = SBGameRound(voter: game.players[1], voterWon: true, gameType: .normal, kontra: .normal, cheater: game.players[0], order: 2)
+            let round2 = SBGameRound(voter: game.players[1], voterWon: true, gameType: .normal, kontra: .normal, cheater: game.players[3], order: 1)
             container.mainContext.insert(round2)
             game.rounds.append(round2)
             return container

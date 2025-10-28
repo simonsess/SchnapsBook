@@ -4,10 +4,6 @@ import SwiftData
 struct SchnapsMainView: View {
     init() {
         UINavigationBar.setCustomTitleColor(UIColor.foregroundPrimary)
-//        let unselectedColor = UIColor.foregroundSecondary
-//        UITabBar.appearance().unselectedItemTintColor = unselectedColor
-//        let selectedColor = UIColor.foregroundPrimary
-//        UITabBar.appearance().tintColor = selectedColor
     }
     
     var body: some View {

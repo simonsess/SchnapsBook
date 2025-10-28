@@ -1,17 +1,19 @@
 import SwiftUI
 
 struct FormStyleModifier: ViewModifier {
+    var bgColor: Color
+    
     func body(content: Content) -> some View {
         content
             .scrollContentBackground(.hidden)
-            .background(.backgroundPrimary)
+            .background(bgColor)
             .foregroundStyle(Color.foregroundPrimary)
     }
 }
 
 extension Form {
-    func formStyling() -> some View {
-        self.modifier(FormStyleModifier())
+    func formStyling(backgroundColor: Color = Color.foregroundPrimary) -> some View {
+        self.modifier(FormStyleModifier(bgColor: backgroundColor))
     }
 }
 

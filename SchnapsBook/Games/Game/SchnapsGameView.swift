@@ -44,65 +44,77 @@ struct SchnapsGameView: View {
                     })
                 }, dismiss: {
                     self.roundDetailInPopup = nil
-//                    animateActiveRound(round: nil)
                 })
             }
             
             if showVotedCard {
                 SBPopupCard(content: {
-                    VotedCardHelperView(card: $votedCard)
+                    VotedCardHelperView(card: $votedCard, roundNo: viewModel.game.rounds.count, voter: viewModel.game.playerToVote.name)
                 }, dismiss: {
                     showVotedCard = false
                 })
             }
         }
+        .safeAreaInset(edge: .bottom, content: {
+            //MARK Bottom buttons
+            HStack(spacing: 0) {
+                Button(action: {
+                    withAnimation(.spring()) {
+                        showVotedCard = true
+                    }
+                }, label: {
+                    Image(systemName: "rectangle.portrait" + (votedCard != nil ? ".fill" : ""))
+                        .resizable()
+                        .scaledToFit()
+                        .padding(15)
+                        .foregroundStyle(.foregroundTabTint)
+                })
+                .frame(width: 64, height: 64)
+                .background(.ultraThinMaterial)
+                .clipShape(Circle())
+                .shadow(radius: 8)
+                Spacer()
+                Button(action: {
+                    showNewRoundEntrySheet = true
+                    showVotedCard = false
+                }, label: {
+                    Image(systemName: "plus")
+                        .foregroundStyle(.foregroundTabTint)
+                })
+                .font(.system(size: 30, weight: .regular))
+                .frame(width: 64, height: 64)
+                .background(.ultraThinMaterial)
+                .clipShape(Circle())
+                .shadow(radius: 8)
+            }
+            .padding(.horizontal, 40)
+            .padding(.vertical, 40)
+        })
         .onAppear(){
             viewModel.processRounds()
         }
-        .toolbar {
-            ToolbarItem(placement: .primaryAction, content: {
-                Button(action: {
-                    showNewRoundEntrySheet = true
-                }, label: {
-                    Label("Add Item", systemImage: "plus")
-                })
-                .disabled(roundDetailInPopup != nil)
-            })
-
-            ToolbarItem(placement: .topBarTrailing) {
-                Menu {
-                    Button("vote card") {
-                        withAnimation(.spring()) {
-                            showVotedCard = true
-                        }
-                    }
-                    Button("Option 2") {}
-                } label: {
-                    // The default 'ellipsis' icon
-                    Label("More", systemImage: "ellipsis.circle")
-                }
-                .tint(.foregroundTabTint)
-            }
-            
-//                Button("Reset Scores", action: {/* TODO: Implement reset logic */})
-//                    .disabled(roundToPopup != nil)
+//        .toolbar {
+//            ToolbarItem(placement: .topBarTrailing) {
+//                Menu {
+//                    Button("vote card") {
+//                        withAnimation(.spring()) {
+//                            showVotedCard = true
+//                        }
+//                    }
+//                    Button("Option 2") {}
+//                } label: {
+//                    Label("More", systemImage: "ellipsis.circle")
+//                }
+//                .tint(.foregroundTabTint)
 //            }
-//            ToolbarItem(placement: .secondaryAction) {
-//                Button("Export Data", action: {/* TODO: Implement export logic */})
-//                    .disabled(roundToPopup != nil)
-//            }
-//            ToolbarItem(placement: .secondaryAction) {
-//                Button("Settings", action: {/* TODO: Implement settings logic */})
-//                    .disabled(roundToPopup != nil)
-//            }
-            
-        }
+//        }
         .sheet(isPresented: $showNewRoundEntrySheet, content: {
             SBRoundEntryView(viewModel: SBRoundEntryViewModel(roundToEdit: nil, game: viewModel.game), completion: { round in
                 guard let round else {
                     return
                 }
                 viewModel.addRound(round: round)
+                votedCard = nil
             })
         })
         .sheet(isPresented: $showRoundSheetEditor, onDismiss: {
@@ -152,6 +164,7 @@ struct SchnapsGameView: View {
                     .frame(maxHeight: .infinity)
                     .frame(width: 2)
                     .foregroundStyle(.foregroundPrimary)
+                    .opacity(0.3)
             }
             let scores = viewModel.scoreForRound(round: roundNo)
             if let round = viewModel.round(index: roundNo) {

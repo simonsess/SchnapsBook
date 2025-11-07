@@ -33,6 +33,8 @@
 		107940CC2EAA7DCE000A9918 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107940CB2EAA7DCE000A9918 /* Colors.xcassets */; };
 		107940CE2EAA8DB8000A9918 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107940CD2EAA8DB4000A9918 /* ColorExtension.swift */; };
 		107940D02EAA98D7000A9918 /* NavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107940CF2EAA98CA000A9918 /* NavigationBarExtension.swift */; };
+		10C6A3D12EBD12D400133C78 /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6A3D02EBD12D400133C78 /* SegmentedPicker.swift */; };
+		10C6A3D32EBD2BC000133C78 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6A3D22EBD2BB900133C78 /* CollectionExtension.swift */; };
 		10D862F92D3BD5A1000C66E6 /* SchnapsBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */; };
 		10D862FF2D3BD5A3000C66E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */; };
 		10D863022D3BD5A3000C66E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D863012D3BD5A3000C66E6 /* Preview Assets.xcassets */; };
@@ -76,6 +78,8 @@
 		107940CB2EAA7DCE000A9918 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		107940CD2EAA8DB4000A9918 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		107940CF2EAA98CA000A9918 /* NavigationBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtension.swift; sourceTree = "<group>"; };
+		10C6A3D02EBD12D400133C78 /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
+		10C6A3D22EBD2BB900133C78 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		10D862F52D3BD5A1000C66E6 /* SchnapsBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchnapsBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsBookApp.swift; sourceTree = "<group>"; };
 		10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			children = (
 				103D89C12EB12B74008719C8 /* VotedCardHelperView.swift */,
 				103D89C32EB13234008719C8 /* Cards.swift */,
+				10C6A3D02EBD12D400133C78 /* SegmentedPicker.swift */,
 			);
 			path = VotedCardHelper;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 		1070ED5D2E9ED85900E1D151 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				10C6A3D22EBD2BB900133C78 /* CollectionExtension.swift */,
 				10E47A482EAD05A0000862A5 /* Modifiers */,
 				107940CF2EAA98CA000A9918 /* NavigationBarExtension.swift */,
 				107940C82EAA75A7000A9918 /* Components */,
@@ -357,6 +363,7 @@
 				1070ED652EA29BFB00E1D151 /* UUIDExtension.swift in Sources */,
 				1072E9EA2D50FD10000F7B20 /* PlayersView.swift in Sources */,
 				1070ED5C2E9EBD6E00E1D151 /* SBRoundEntryView.swift in Sources */,
+				10C6A3D32EBD2BC000133C78 /* CollectionExtension.swift in Sources */,
 				103D89BB2EB01603008719C8 /* SettingsView.swift in Sources */,
 				1070ED672EA8E9E800E1D151 /* ViewExtension.swift in Sources */,
 				10E47A4C2EAD4BC1000862A5 /* FormStyleModifier.swift in Sources */,
@@ -364,6 +371,7 @@
 				107940CA2EAA75C7000A9918 /* FormTextLabelRow.swift in Sources */,
 				1072E9C92D4FE23F000F7B20 /* SBGame.swift in Sources */,
 				1072E9C52D4FDE64000F7B20 /* SBGameRound.swift in Sources */,
+				10C6A3D12EBD12D400133C78 /* SegmentedPicker.swift in Sources */,
 				1072E9CB2D4FE39C000F7B20 /* SBSchnapsBook.swift in Sources */,
 				1072E9F12D510A97000F7B20 /* NewPlayerView.swift in Sources */,
 				10E47A572EAFB29E000862A5 /* SBSeparator.swift in Sources */,

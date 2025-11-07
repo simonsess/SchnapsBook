@@ -72,12 +72,9 @@ struct SBRoundEntryView: View {
                 .formStyling()
                 SBPrimaryButton(action: processActiveRound, title: viewModel.isEditing ? "Update" : "Submit")
                     .disabledStyling(isDisabled: viewModel.cheaterSwitch &&  viewModel.cheater.id == UUID.zero)
-//                SBSecondaryButton(action: {
-//                    mockRounds()
-//                }, title: "mock")
-//                SBSecondaryButton(action: {
-//                    mockRounds2()
-//                }, title: "moc2")
+                SBSecondaryButton(action: {
+                    mockRounds()
+                }, title: "mock")
             }
             .background(Color.backgroundPrimary)
             .padding(.vertical)
@@ -96,38 +93,15 @@ struct SBRoundEntryView: View {
         dismiss()
     }
     
-    /*
+    
     func mockRounds() {
-        var roundNo = viewModel.game.rounds.count
-        var round = SBGameRound(voter: viewModel.game.playerToVote, coop: viewModel.playerFromId(id: viewModel.coopPlayersSet[3].id), voterWon: true, gameType: .normal, kontra: .normal, cheater: nil, order: roundNo)
-            viewModel.addRound(round: round)
-        roundNo += 1
-        round = SBGameRound(voter: viewModel.game.playerToVote, coop: viewModel.playerFromId(id: viewModel.coopPlayersSet[0].id), voterWon: true, gameType: .normal, kontra: .normal, cheater: nil, order: roundNo)
-            viewModel.addRound(round: round)
-        roundNo += 1
-        round = SBGameRound(voter: viewModel.game.playerToVote, coop: viewModel.playerFromId(id: viewModel.coopPlayersSet[3].id), voterWon: true, gameType: .normal, kontra: .normal, cheater: nil, order: roundNo)
-            viewModel.addRound(round: round)
-        roundNo += 1
-        round = SBGameRound(voter: viewModel.game.playerToVote, coop: viewModel.playerFromId(id: viewModel.coopPlayersSet[2].id), voterWon: true, gameType: .normal, kontra: .normal, cheater: nil, order: roundNo)
-            viewModel.addRound(round: round)
-        roundNo += 1
-        round = SBGameRound(voter: viewModel.game.playerToVote, coop: nil, voterWon: true, gameType: .normal, kontra: .normal, cheater: nil, order: roundNo)
-            viewModel.addRound(round: round)
-            
-            dismiss()
+        for i in 1..<10 {
+            let id = viewModel.coopPlayersSet[i%3].id
+            let round = SBGameRound(voter: viewModel.game.playerToVote, coop: viewModel.game.players.first(where: { $0.id == id }) , voterWon: Bool.random(), gameType: .normal, order: viewModel.game.rounds.count)
+            viewModel.round = round
+            viewModel.addRound()
         }
-        
-    private func mockRounds2() {
-        var roundNo = viewModel.game.rounds.count
-        var round = SBGameRound(voter: viewModel.game.playerToVote, coop: viewModel.playerFromId(id: viewModel.coopPlayersSet[3].id), voterWon: true, gameType: .normal, kontra: .normal, cheater: nil, order: roundNo)
-        viewModel.addRound(round: round)
-        roundNo += 1
-        round = SBGameRound(voter: viewModel.game.playerToVote, coop: viewModel.playerFromId(id: viewModel.coopPlayersSet[2].id), voterWon: true, gameType: .normal, kontra: .normal, cheater: nil, order: roundNo)
-        viewModel.addRound(round: round)
-        mockRounds()
     }
-     */
-
 }
 
 #Preview {

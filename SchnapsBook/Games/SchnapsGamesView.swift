@@ -24,6 +24,7 @@ struct SchnapsGamesView: View {
                             .fontWeight(.bold)
                     }
                     .listRowBackground(Color.backgroundSecondary)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         navigationPath.append(game)
                     }

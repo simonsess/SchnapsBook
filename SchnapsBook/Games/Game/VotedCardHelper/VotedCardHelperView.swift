@@ -6,6 +6,9 @@ struct VotedCardHelperView: View {
     
     @Binding var card: Card?
     
+    var roundNo: Int
+    var voter: String
+    
     var body: some View {
         VStack {
             if let card {
@@ -15,11 +18,13 @@ struct VotedCardHelperView: View {
                         .scaledToFit()
                         .overlay(
                             Text(card.suitValue.title)
-                                .font(.largeTitle)
+                                .font(.system(size: 50))
                                 .fontWeight(.heavy)
-                                .foregroundColor(.foregroundPrimary),
+                                .foregroundColor(.foregroundPrimary)
+                                .offset(y: 15),
                             alignment: .bottom
                         )
+                        .padding(.bottom, 10)
                     Spacer()
                     SBSecondaryButton(action: {
                         self.card = nil
@@ -27,48 +32,33 @@ struct VotedCardHelperView: View {
                 }
             } else {
                 VStack(spacing: 0) {
-                    Text("XY to vote")
+                    Text("\(voter) to vote")
                         .font(.headline)
                         .fontWeight(.bold)
                         .padding(.bottom, 5)
-                    Text("Round XY")
+                    Text("Round \(roundNo)")
                         .font(.subheadline)
                         .padding(.bottom, 10)
-                        HStack {
-                            Text("Suits")
-                                .font(.subheadline)
-                                .foregroundStyle(Color.foregroundSecondary)
-                            Spacer()
-                        }
-                        HStack {
-                            Spacer()
-                            Picker("Suits", selection: $pickedSuite) {
-                                ForEach(Suit.allCases, id: \.self) { suit in
-                                    Text(String(describing: suit)).tag(suit)
-                                }
-                            }
-                            .foregroundStyle(Color.foregroundPrimary)
-                            .pickerStyle(.menu)
-                        }
-                        SBSeparator()
-                        .padding(.bottom, 15)
-                    
                     HStack {
                         Text("Suits")
                             .font(.subheadline)
                             .foregroundStyle(Color.foregroundSecondary)
                         Spacer()
                     }
+                    ImageSegmentPicker(selection: $pickedSuite)
+                    .padding(.top, 10)
+                    
+                    SBSeparator()
+                        .padding(.bottom, 15)
+                    
                     HStack {
+                        Text("Card")
+                            .font(.subheadline)
+                            .foregroundStyle(Color.foregroundSecondary)
                         Spacer()
-                        Picker("Card", selection: $pickedValue) {
-                            ForEach(SuitValue.allCases, id: \.self) { suit in
-                                Text(String(describing: suit)).tag(suit)
-                            }
-                        }
-                        .foregroundStyle(Color.foregroundPrimary)
-                        .pickerStyle(.menu)
                     }
+                    TextSegmentPicker(selection: $pickedValue)
+                        .padding(.top, 10)
                     SBSeparator()
                         .padding(.bottom, 25)
                     
@@ -78,7 +68,6 @@ struct VotedCardHelperView: View {
                 }
             }
         }
-        .frame(height: 380)
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 20)
@@ -90,12 +79,9 @@ struct VotedCardHelperView: View {
 }
 
 #Preview {
-    //Card(suit: .leaves, suitValue: .X))
-    //Binding(get: {nil}, set: {_ in })
-    VotedCardHelperView(card: .constant(Card(suit: .leaves, suitValue: .X)))
-    
+    VotedCardHelperView(card: .constant(Card(suit: .leaves, suitValue: .ace)), roundNo: 2, voter: "test player")
 }
 
 #Preview {
-    VotedCardHelperView(card: .constant(nil))
+    VotedCardHelperView(card: .constant(nil), roundNo: 2, voter: "test player")
 }

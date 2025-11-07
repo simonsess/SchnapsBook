@@ -12,7 +12,7 @@ struct FormStyleModifier: ViewModifier {
 }
 
 extension Form {
-    func formStyling(backgroundColor: Color = Color.foregroundPrimary) -> some View {
+    func formStyling(backgroundColor: Color = Color.backgroundPrimary) -> some View {
         self.modifier(FormStyleModifier(bgColor: backgroundColor))
     }
 }

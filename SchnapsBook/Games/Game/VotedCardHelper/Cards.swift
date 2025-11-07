@@ -1,7 +1,15 @@
 import Foundation
 import SwiftUI
 
-enum Suit: CaseIterable {
+public protocol EnumImageType {
+    var image: Image { get }
+}
+
+public protocol EnumTitleType {
+    var title: String { get }
+}
+
+enum Suit: CaseIterable, EnumImageType {
     case leaves, hearts, bells, acrons
     
     var image: Image {
@@ -18,7 +26,7 @@ enum Suit: CaseIterable {
     }
 }
 
-enum SuitValue: String , CaseIterable {
+enum SuitValue: String , CaseIterable, EnumTitleType {
     case ace, `X`, king, over, under, `IX` 
     
     var title: String {

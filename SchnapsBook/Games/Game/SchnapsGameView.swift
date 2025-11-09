@@ -2,7 +2,6 @@ import SwiftUI
 import SwiftData
 
 struct SchnapsGameView: View {
-    @State var roundDetailInPopup: SBGameRound? = nil
     @State var voterIndex: Int?
     @State private var showNewRoundEntrySheet: Bool = false
     @State private var showRoundSheetEditor: Bool = false
@@ -10,53 +9,51 @@ struct SchnapsGameView: View {
     @State private var votedCard: Card? = nil
     @State var showVotedCard: Bool = false
     
+    @State var roundDetailInPopup: SBGameRound? = nil
+    @State var showRoundDetail: Bool = false
+    
     @Bindable var viewModel: SchnapsGameViewModel
 
     var body: some View {
-        ZStack {
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 0, pinnedViews: [.sectionHeaders]) {
-                    Section(content: {
-                        ForEach(viewModel.game.rounds.indices, id: \.self) { roundNo in
-                            rowView(roundNo: roundNo)
-                                .onTapGesture {
-                                    showRoundDetail(round: viewModel.round(index: roundNo))
-                                }
-                        }
-                    }, header: {
-                        headerView()
-                            .padding(.bottom, 5)
-                    })
-                }
-                .padding(.horizontal, 2)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .scrollBounceBehavior(.basedOnSize)
-            .background(.backgroundPrimary)
-            
-            
-            if let roundDetailInPopup {
-                SBPopupCard(content: {
-                    RoundDetailPopup(round: roundDetailInPopup, dismiss: {
-                        animateActiveRound(round: nil)
-                    }, edit: {
-                        self.showRoundSheetEditor = true
-                    })
-                }, dismiss: {
-                    self.roundDetailInPopup = nil
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 0, pinnedViews: [.sectionHeaders]) {
+                Section(content: {
+                    ForEach(viewModel.game.rounds.indices, id: \.self) { roundNo in
+                        rowView(roundNo: roundNo)
+                            .onTapGesture {
+                                showRoundDetail(round: viewModel.round(index: roundNo))
+                            }
+                    }
+                }, header: {
+                    headerView()
+                        .padding(.bottom, 5)
                 })
             }
-            
-            if showVotedCard {
-                SBPopupCard(content: {
-                    VotedCardHelperView(card: $votedCard, roundNo: viewModel.game.rounds.count, voter: viewModel.game.playerToVote.name)
-                }, dismiss: {
-                    showVotedCard = false
-                })
-            }
+            .padding(.horizontal, 2)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .scrollBounceBehavior(.basedOnSize)
+        .background(.backgroundPrimary)
+        .modalPopup(showPopup: showRoundDetail, content: {
+            if let roundDetailInPopup {
+                RoundDetailPopup(round: roundDetailInPopup, dismiss: {
+                    animateActiveRound(round: nil)
+                }, edit: {
+                    self.showRoundSheetEditor = true
+                    animateRoundDetail(show: false)
+                })
+            }
+        }, dismiss: {
+            animateRoundDetail(show: false)
+            self.roundDetailInPopup = nil
+        })
+        .modalPopup(showPopup: showVotedCard, content: {
+            VotedCardHelperView(card: $votedCard, roundNo: viewModel.game.rounds.count, voter: viewModel.game.playerToVote.name)
+        }, dismiss: {
+            showVotedCard = false
+        })
         .safeAreaInset(edge: .bottom, content: {
-            //MARK Bottom buttons
+            //MARK: Bottom buttons
             HStack(spacing: 0) {
                 Button(action: {
                     withAnimation(.spring()) {
@@ -93,21 +90,21 @@ struct SchnapsGameView: View {
         .onAppear(){
             viewModel.processRounds()
         }
-//        .toolbar {
-//            ToolbarItem(placement: .topBarTrailing) {
-//                Menu {
-//                    Button("vote card") {
-//                        withAnimation(.spring()) {
-//                            showVotedCard = true
-//                        }
-//                    }
-//                    Button("Option 2") {}
-//                } label: {
-//                    Label("More", systemImage: "ellipsis.circle")
-//                }
-//                .tint(.foregroundTabTint)
-//            }
-//        }
+        //        .toolbar {
+        //            ToolbarItem(placement: .topBarTrailing) {
+        //                Menu {
+        //                    Button("vote card") {
+        //                        withAnimation(.spring()) {
+        //                            showVotedCard = true
+        //                        }
+        //                    }
+        //                    Button("Option 2") {}
+        //                } label: {
+        //                    Label("More", systemImage: "ellipsis.circle")
+        //                }
+        //                .tint(.foregroundTabTint)
+        //            }
+        //        }
         .sheet(isPresented: $showNewRoundEntrySheet, content: {
             SBRoundEntryView(viewModel: SBRoundEntryViewModel(roundToEdit: nil, game: viewModel.game), completion: { round in
                 guard let round else {
@@ -188,14 +185,22 @@ struct SchnapsGameView: View {
     
     func showRoundDetail(round: SBGameRound?) {
         guard let round else {
+            animateRoundDetail(show: false)
             return
         }
+        animateRoundDetail(show: true)
         animateActiveRound(round: round)
     }
     
     func animateActiveRound(round: SBGameRound?) {
         withAnimation(.spring()) {
             roundDetailInPopup = round
+        }
+    }
+    
+    func animateRoundDetail(show: Bool) {
+        withAnimation(.spring()) {
+            showRoundDetail = show
         }
     }
 }

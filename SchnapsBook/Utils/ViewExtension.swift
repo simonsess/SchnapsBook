@@ -13,6 +13,4 @@ extension View {
             self
         }
     }
-    
-    
 }

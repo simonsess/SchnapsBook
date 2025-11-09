@@ -2,7 +2,6 @@ import SwiftUI
 
 extension Text {
     @ViewBuilder func cellFontStyle(_ isVoter: Bool) -> some View {
-        
         if isVoter {
             self
                 .font(.title2)

@@ -35,6 +35,7 @@
 		107940D02EAA98D7000A9918 /* NavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107940CF2EAA98CA000A9918 /* NavigationBarExtension.swift */; };
 		10C6A3D12EBD12D400133C78 /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6A3D02EBD12D400133C78 /* SegmentedPicker.swift */; };
 		10C6A3D32EBD2BC000133C78 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6A3D22EBD2BB900133C78 /* CollectionExtension.swift */; };
+		10C6A3D52EBE905500133C78 /* ModalPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C6A3D42EBE903C00133C78 /* ModalPopup.swift */; };
 		10D862F92D3BD5A1000C66E6 /* SchnapsBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */; };
 		10D862FF2D3BD5A3000C66E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */; };
 		10D863022D3BD5A3000C66E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D863012D3BD5A3000C66E6 /* Preview Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		107940CF2EAA98CA000A9918 /* NavigationBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExtension.swift; sourceTree = "<group>"; };
 		10C6A3D02EBD12D400133C78 /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
 		10C6A3D22EBD2BB900133C78 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
+		10C6A3D42EBE903C00133C78 /* ModalPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPopup.swift; sourceTree = "<group>"; };
 		10D862F52D3BD5A1000C66E6 /* SchnapsBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchnapsBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D862F82D3BD5A1000C66E6 /* SchnapsBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnapsBookApp.swift; sourceTree = "<group>"; };
 		10D862FE2D3BD5A3000C66E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		10E47A482EAD05A0000862A5 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				10C6A3D42EBE903C00133C78 /* ModalPopup.swift */,
 				10E47A4D2EAD4C4A000862A5 /* ButtonStylingModifier.swift */,
 				10E47A4B2EAD4BB6000862A5 /* FormStyleModifier.swift */,
 				10E47A492EAD05B8000862A5 /* DisabledStylingModifier.swift */,
@@ -372,6 +375,7 @@
 				1072E9C92D4FE23F000F7B20 /* SBGame.swift in Sources */,
 				1072E9C52D4FDE64000F7B20 /* SBGameRound.swift in Sources */,
 				10C6A3D12EBD12D400133C78 /* SegmentedPicker.swift in Sources */,
+				10C6A3D52EBE905500133C78 /* ModalPopup.swift in Sources */,
 				1072E9CB2D4FE39C000F7B20 /* SBSchnapsBook.swift in Sources */,
 				1072E9F12D510A97000F7B20 /* NewPlayerView.swift in Sources */,
 				10E47A572EAFB29E000862A5 /* SBSeparator.swift in Sources */,

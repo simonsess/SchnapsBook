@@ -72,9 +72,9 @@ struct SBRoundEntryView: View {
                 .formStyling()
                 SBPrimaryButton(action: processActiveRound, title: viewModel.isEditing ? "Update" : "Submit")
                     .disabledStyling(isDisabled: viewModel.cheaterSwitch &&  viewModel.cheater.id == UUID.zero)
-                SBSecondaryButton(action: {
-                    mockRounds()
-                }, title: "mock")
+//                SBSecondaryButton(action: {
+//                    mockRounds()
+//                }, title: "mock")
             }
             .background(Color.backgroundPrimary)
             .padding(.vertical)

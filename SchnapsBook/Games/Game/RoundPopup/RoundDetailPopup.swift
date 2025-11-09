@@ -48,9 +48,9 @@ struct RoundDetailPopup: View {
             SBPrimaryButton(action: {
                 edit()
             }, title: "Edit")
-            SBSecondaryButton(action: {
-                dismiss()
-            }, title: "Dismiss")
+//            SBSecondaryButton(action: {
+//                dismiss()
+//            }, title: "Dismiss")
         }
         .padding()
         .foregroundStyle(Color.foregroundPrimary)
